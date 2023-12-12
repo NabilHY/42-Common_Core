@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/11 09:12:08 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/11 09:49:06 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		ft_putchar_fd(s[i++], fd);
 }
+/*
+int	main()
+{
+	char str[] = "Print this";
+	ft_putstr_fd(str, 1);
+	return (0);
+}*/

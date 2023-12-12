@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/05 10:21:32 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	size_t	i;
+
+	if (n == 0)
+		return ;
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(s + i) = 0;
+		i++;
+	}
 }
+/*int	main(void)
+{
+	char s1[] = "Long String String";
+	char s2[] = "Long String String";
+ 	ft_bzero((s1 + 12), 4);
+	printf("Custom ==> %s\n", s1);
+	bzero((s2 + 12), 4);
+	printf("Original ==> %s\n", s2);
+}*/

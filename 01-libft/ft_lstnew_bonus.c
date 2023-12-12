@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/11 11:49:43 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/12 12:11:51 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
+/*int	main(void)
+{
+	t_list	*first_ptr;
+	char str[] = "String livesin first node";
+	first_ptr = ft_lstnew((void *)str);
+	printf("%s\n", first_ptr->content);
+	return(0);
+}*/

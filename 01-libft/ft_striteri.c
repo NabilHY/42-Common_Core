@@ -1,18 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/10 14:10:44 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }
+/*
+void	next_char(unsigned int i, char *ptr)
+{
+	*ptr += i;
+}
+
+int	main(void)
+{
+	char str[] = "123456";
+	ft_striteri(str, next_char);
+	printf("%s\n", str);
+}*/

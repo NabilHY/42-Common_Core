@@ -6,13 +6,13 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:24:27 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/04 17:55:21 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/05 09:41:02 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-	if (c <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }

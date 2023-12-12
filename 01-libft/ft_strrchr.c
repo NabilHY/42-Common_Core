@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/06 10:46:25 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	int	i;
+
+	i = ft_strlen(s);
+	while (i > 0)
+	{
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i--;
+	}
+	if (s[i] == (unsigned char)c)
+		return ((char *)s);
+	return (NULL);
 }
+/*int	main(void)
+{
+	char	str[] = "hello world";
+
+	printf("%p\n", ft_strrchr(str, 'z'));
+	printf("%p\n", strrchr(str, 'z'));
+	return (0);
+}*/

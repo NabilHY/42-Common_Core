@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:41:56 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/05 09:41:25 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/08 11:46:13 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+
+char	*ft_strdup(const char *s1)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
+	char	*buffer;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	buffer = (char *)malloc((len + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	if (len == 0)
+	{
+		ft_bzero(buffer, 1);
+		return (buffer);
+	}
+	ft_memmove(buffer, s1, len + 1);
+	return (buffer);
+}
+/*
+int	main(void)
+{
+	char	str[] = "1337 coding school";
+
+	printf("%s\n", ft_strdup(str));
 	return (0);
 }
+*/

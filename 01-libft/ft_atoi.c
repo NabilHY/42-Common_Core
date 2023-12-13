@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 19:10:14 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/10 12:02:58 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:42:20 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,39 +25,11 @@ static int	is_whitespace(char c)
 	return (0);
 }
 
-static int	check_overflow(unsigned long nbr, int new_digit, int sign)
-{
-	if (sign == 1)
-	{
-		if ((nbr >= 922337203685477580 && new_digit > 7)
-			|| (nbr >= 922337203685477581))
-			return (-1);
-	}
-	else if (sign == -1)
-	{
-		if ((nbr >= 922337203685477580 && new_digit > 8)
-			|| (nbr >= 922337203685477581))
-			return (0);
-	}
-	return (1);
-}
-
-enum e_vars
-{
-	sign, 
-	overflow,
-	
-};
-
-
-
 int	ft_atoi(const char *str)
 {
 	int				i;
 	int				sign;
 	unsigned long	result;
-	int				overflow;
-
 
 	i = 0;
 	sign = 1;
@@ -73,9 +45,6 @@ int	ft_atoi(const char *str)
 		i++;
 	while (ft_isdigit(str[i]))
 	{
-		overflow = check_overflow(result, (str[i] - '0'), sign);
-		if (overflow != 1)
-			return (overflow);
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}

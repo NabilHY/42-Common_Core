@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:46:13 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:48:05 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 char	*ft_strdup(const char *s1)
 {

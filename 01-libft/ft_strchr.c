@@ -6,10 +6,9 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:46:25 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:47:24 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -18,7 +17,6 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-
 	while (s[i])
 	{
 		if (s[i] == (char)c)

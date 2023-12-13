@@ -6,18 +6,18 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:43:03 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 08:44:46 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:43:52 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new->next = *lst;
 	*lst = new;
 }
-/*int	main()
+/*int	main(void)
 {
 	t_list 	*link;
 	t_list	*new_node;

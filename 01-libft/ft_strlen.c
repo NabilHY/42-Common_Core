@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:32:27 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 14:46:47 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 size_t	ft_strlen(const char *s)
 {

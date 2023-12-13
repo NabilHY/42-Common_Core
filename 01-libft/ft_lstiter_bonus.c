@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:18:03 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 19:29:51 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 08:31:40 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst->next)
+	if (!f || !lst)
+		return ;
+	while (lst)
 	{
 		f(lst->content);
 		lst = lst->next;
 	}
 }
 
-void	increment_by_one(void *number)
+/*void	increment_by_one(void *number)
 {
 	int	*x;
 
 	x = (int *)number;
 	*x += 1;
 }
-
 int	main(void)
 {
 	t_list *link;
@@ -37,20 +38,20 @@ int	main(void)
 	t_list *node_3;
 	t_list *node_4;
 
-	int	*arr = {1, 2, 3, 4, 5};
-	node_1 = ft_lstnew(arr);
-	node_2 = ft_lstnew(arr + 1);
-	node_3 = ft_lstnew(arr + 2);
-	node_4 = ft_lstnew(arr + 3);
+	int	arr[] = {1, 2, 3, 4};
+	node_1 = ft_lstnew(&arr[0]);
+    node_2 = ft_lstnew(&arr[1]);
+    node_3 = ft_lstnew(&arr[2]);
+    node_4 = ft_lstnew(&arr[3]);
 	link = NULL;
 	ft_lstadd_front(&link, node_3);
 	ft_lstadd_front(&link, node_2);
 	ft_lstadd_front(&link, node_1);
 	ft_lstadd_back(&link, node_4);
 	ft_lstiter(link, increment_by_one);
-	while (link->next)
+	while (link)
 	{
-		printf("%d\n", (int *)link->content);
-		link = link->next;
+   		printf("%d\n", *((int *)link->content));
+    	link = link->next;
 	}
-}
+}*/

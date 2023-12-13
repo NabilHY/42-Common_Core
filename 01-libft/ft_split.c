@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:20:35 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 18:39:00 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:29:31 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_delimiter(char c, char d)
 	return (d == c);
 }
 
-static size_t	word_count(const char *str, char c)
+static int	word_count(const char *str, char c)
 {
 	int	count;
 	int	i;
@@ -53,7 +53,6 @@ static char	**wipe_arr(char **ptr, int n)
 
 char	**ft_split(char const *s, char c)
 {
-	int		count;
 	char	**ptrs;
 	int		j;
 	int		i;
@@ -61,11 +60,10 @@ char	**ft_split(char const *s, char c)
 
 	n = 0;
 	i = 0;
-	count = word_count(s, c);
-	ptrs = (char **)malloc(sizeof(char *) * (count + 1));
+	ptrs = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (!ptrs)
 		return (NULL);
-	while (s[i] && n < count)
+	while (s[i] && n < word_count(s, c))
 	{
 		j = 0;
 		while (is_delimiter(s[i], c) && s[i])

@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:30:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/10 15:18:25 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:08:53 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	byte_comparison(unsigned char c1, unsigned char c2)
 {

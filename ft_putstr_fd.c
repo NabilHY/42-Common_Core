@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:12:08 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/11 09:49:06 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:35:09 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	while (s[i])
 		ft_putchar_fd(s[i++], fd);
 }

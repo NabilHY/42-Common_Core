@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 09:42:40 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/13 09:17:28 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/11 14:43:03 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/15 11:27:54 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		*(unsigned char *)(b + i) = (unsigned char)(c);
-		i++;
-	}
-	return (b);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 /*int	main(void)
 {
-	char dest[10];
+	t_list 	*link;
+	t_list	*new_node;
 
-	ft_memset(dest, 67, 9);
-	printf("%s\n", dest);
-	return (0);
+	new_node = ft_lstnew("Node 1");
+	ft_lstadd_front(&link, new_node);
+	ft_putstr_fd((char *)link->content, 1);
+	return(0);
 }*/

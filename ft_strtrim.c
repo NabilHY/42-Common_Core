@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 09:39:49 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/10 09:59:33 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:05:23 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	char_check(char c, const char *set)
 {

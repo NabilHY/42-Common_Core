@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:20:35 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/13 15:29:31 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 12:25:23 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	is_delimiter(char c, char d)
 {
@@ -25,17 +24,15 @@ static int	word_count(const char *str, char c)
 
 	count = 0;
 	i = 0;
+	while (is_delimiter(str[i], c) && str[i])
+		i++;
 	while (str[i])
 	{
-		if (!is_delimiter(str[i], c))
-		{
-			count++;
-			while (!is_delimiter(str[i], c) && str[i])
-				i++;
-		}
-		else
-			while (is_delimiter(str[i], c) && str[i])
-				i++;
+		while (!is_delimiter(str[i], c) && str[i])
+			i++;
+		count++;
+		while (is_delimiter(str[i], c) && str[i])
+			i++;
 	}
 	return (count);
 }

@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:48:53 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/06 11:22:37 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/05 12:12:46 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/15 12:11:31 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <stdio.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-
-	i = 0;
 	if (!dst && !src)
 		return (NULL);
-	while (i < n)
+	if (dst < src)
+		ft_memcpy(dst, src, len);
+	else
 	{
-		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
-		i++;
+		while (len)
+		{
+			len--;
+			*(unsigned char *)(len + dst) = *(unsigned char *)(len + src);
+		}
 	}
 	return (dst);
 }
-/*int main(void)
-{
-	char s1[] = "String Paste Here     ";
-	char s2[] = "String Paste Here     ";
-	char src[] = "String Gone";
-	printf("%s\n", ft_memcpy(s1, src, 11));
-	printf("%s\n", memcpy(s2, src, 11));
+/*
+int main() {
+	char source[] = "This is a test string.";
+	//char dest1[50];
+	// char dest2[50];
+
+
+	//memmove(dest1, source, strlen(source) + 1);
+	//printf("Standard memmove: %s\n", dest1);
+
+	//ft_memmove(source + 5, source, strlen(source) + 1);
+	//printf("ft_memmove: %s\n", source);
+
 	return (0);
-}*/
+}
+*/

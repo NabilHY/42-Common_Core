@@ -6,13 +6,14 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:00:15 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/13 13:01:27 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 08:26:24 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	number_digits(int n)
+static 
+	int	number_digits(int n)
 {
 	int	digits;
 

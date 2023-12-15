@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 11:40:41 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/12 08:48:29 by nhayoun          ###   ########.fr       */
+/*   Created: 2023/12/05 11:48:53 by nhayoun           #+#    #+#             */
+/*   Updated: 2023/12/15 12:11:24 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	char_cmp(unsigned char c1, unsigned char c2)
-{
-	return ((unsigned char)c1 - (unsigned char)c2);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
 	{
-		if (char_cmp(s1[i], s2[i]) > 0)
-			return (1);
-		else if (char_cmp(s1[i], s2[i]) < 0)
-			return (-1);
+		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
 		i++;
 	}
-	return (0);
+	return (dst);
 }
-/*
-int	main(void)
+/*int main(void)
 {
-	printf("%d\n" ,ft_strncmp("testss", "test", 7));
-	printf("%d\n" ,strncmp("testss", "test", 7));
+	char s1[] = "String Paste Here     ";
+	char s2[] = "String Paste Here     ";
+	char src[] = "String Gone";
+	printf("%s\n", ft_memcpy(s1, src, 11));
+	printf("%s\n", memcpy(s2, src, 11));
 	return (0);
-}
-*/
+}*/

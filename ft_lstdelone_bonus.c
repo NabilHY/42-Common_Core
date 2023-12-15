@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:09:53 by nhayoun           #+#    #+#             */
-/*   Updated: 2023/12/13 15:32:58 by nhayoun          ###   ########.fr       */
+/*   Updated: 2023/12/15 11:59:01 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst)
-	{
-		del((lst)->content);
-		free(lst);
-		lst = NULL;
-	}
+	if (!lst || !del)
+		return ;
+	del((lst)->content);
+	free(lst);
 }
 
 /*

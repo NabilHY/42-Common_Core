@@ -6,92 +6,37 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/01 19:48:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/02 19:33:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "includes/push_swap.h"
 #include "libft/libft.h"
 #include "includes/push_swap.h"
 
-void	free_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
-int	check_args(char **arr_of_args)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (arr_of_args[i])
-	{
-		j = 0;
-		if (arr_of_args[i][j] == '-' || arr_of_args[i][j] == '+')
-			j++;
-		while (arr_of_args[i][j])
-		{
-			if (!ft_isdigit(arr_of_args[i][j]))
-			{
-				free_arr(arr_of_args);
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	check_repetition(char **arr_of_args)
-{
-	int		i;
-	int		j;
-
-	while ()
-}
-
 int	main(int ac, char **av)
 {
-	t_dlist	*a_stack;
-	t_dlist	*current_element;
-	int		i;
+	t_dlist	*a_stack_head;
+	char	**arr_of_args;
+	t_dlist	*current_node;
 	
-	a_stack = NULL;
-	if (ac == 2)
+	a_stack_head = NULL;
+	arr_of_args = NULL;
+	a_stack_head = parse_args(ac, av);
+	if (!a_stack_head)
+		return (0);
+	current_node = a_stack_head;
+	while (current_node)
 	{
-		i = 0;
-		av = ft_split(av[1], 32);
-		if (!check_args(av) || !check_repetition(av))
-		{
-			ft_putstr_fd("Error\n", 1);
-			return (0);
-		}
-		while (av[i])
-		{
-			ft_dlstadd_back(&a_stack, ft_dlstnew(i, ft_atoi(av[i])));
-			i++;
-		}
-		current_element = ft_dlstfirst(a_stack);
-		while (current_element)
-		{
-			ft_putstr_fd("Element With index :", 1);
-			ft_putnbr_fd(current_element->index, 1);
-			ft_putstr_fd("\n", 1);
-			ft_putstr_fd(" With Value : ", 1);
-			ft_putnbr_fd(current_element->value, 1);
-			ft_putstr_fd("\n", 1);
-			ft_putstr_fd("\n", 1);
-			current_element = current_element->next;
-		}
+		ft_putstr_fd("node With index :", 1);
+		ft_putnbr_fd(current_node->index, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd(" With Value : ", 1);
+		ft_putnbr_fd(current_node->value, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", 1);
+		current_node = current_node->next;
 	}
 	return (0);
 }

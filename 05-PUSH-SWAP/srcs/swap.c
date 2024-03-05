@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 12:37:49 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/02 18:05:42 by nhayoun          ###   ########.fr       */
+/*   Created: 2024/03/05 02:40:16 by nhayoun           #+#    #+#             */
+/*   Updated: 2024/03/05 02:51:21 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft/libft.h"
-t_dlist	*parse_args(int ac, char **av);
-int		check_args(char **arr_of_args);
-void	free_arr(char **arr);
-int		check_repetition(char **arr_of_args);
-#endif
+#include "../includes/push_swap.h"
+
+void	swap_stack(t_dlist **stack)
+{
+	
+}
+
+void	swap_stacks(t_dlist **first_stack, t_dlist **second_stack)
+{
+	
+}

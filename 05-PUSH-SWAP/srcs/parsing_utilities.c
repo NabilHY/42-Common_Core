@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/02 19:31:52 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/04 23:18:06 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ t_dlist		*parse_args(int ac, char **av)
 			ft_dlstadd_back(&a_stack, ft_dlstnew(i, ft_atoi(args_array[i])));
 			i++;
 		}
-		free_arr(args_array);
 	}	
 	return (a_stack);
 }

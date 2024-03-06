@@ -18,23 +18,23 @@ FSANITIZE= -g -fsanitize=address
 all: $(EXEC)
 
 $(PUSH_SWAP_AR): $(OBJS)
-	ar rcs $(PUSH_SWAP_AR) $(OBJS)
+	@ar rcs $(PUSH_SWAP_AR) $(OBJS)
 
 $(LIBFT_AR): $(LIBFT_INCLUDE)
-	make -C libft
+	@make -C libft
 
 $(EXEC): $(LIBFT_INCLUDE) $(INCLUDE) $(OBJS) $(LIBFT_AR) $(PUSH_SWAP_AR)
-	$(CC) $(FLAGS) $(FSANITIZE) $(LIBFT_AR) $(PUSH_SWAP_AR) $(ENTRY) -o $(EXEC)
+	@$(CC) $(FLAGS) $(FSANITIZE) $(LIBFT_AR) $(PUSH_SWAP_AR) $(ENTRY) -o $(EXEC)
 
 %.o: %.c
-	$(CC) $(FLAGS) -I $(INCLUDE) $(FSANITIZE) -c $< -o $@
+	@$(CC) $(FLAGS) -I $(INCLUDE) $(FSANITIZE) -c $< -o $@
 	
 clean:
-	rm -rf $(OBJS)
-	make clean -C libft
+	@rm -rf $(OBJS)
+	@make clean -C libft
 fclean: clean
-	rm -rf $(PUSH_SWAP_AR) $(EXEC)
-	make fclean -C libft
+	@rm -rf $(PUSH_SWAP_AR) $(EXEC)
+	@make fclean -C libft
 re: fclean all
 
 .PHONY: libft

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/06 13:31:57 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/07 15:32:30 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,39 @@
 
 int	main(int ac, char **av)
 {
-	t_dlist	*a_stack_head;
-	t_dlist *b_stack_head;
+	t_dlist	*a_stack;
+	t_dlist *b_stack;
 	char	**arr_of_args;
-	t_dlist	*current_node;
 	
-	a_stack_head = NULL;
-	b_stack_head = NULL;
+	a_stack = NULL;
+	b_stack = NULL;
 	arr_of_args = NULL;
 	
-	a_stack_head = parse_args(ac, av);
-	if (!a_stack_head)
+	a_stack = parse_args(ac, av);
+	if (!a_stack)
 		return (0);
-	current_node = a_stack_head;
-	while (current_node)
-	{
-		ft_putstr_fd("Stack 1 : " ,1);
-		ft_putnbr_fd(current_node->index, 1);
-		ft_putstr_fd("<===>", 1);
-		ft_putnbr_fd(current_node->value, 1);
-		ft_putstr_fd("\n", 1);
-		current_node = current_node->next;
-	}
-	current_node = ft_dlstfirst(a_stack_head);
-	ft_putstr_fd("\nStack 1\n", 1);
-	//push_to_stack(&a_stack_head, &b_stack_head, 'B');
-	//push_to_stack(&a_stack_head, &b_stack_head, 'B');
-	//push_to_stack(&a_stack_head, &b_stack_head, 'B');
-	//WARNING ++>>>> CURRENT_NODE COULD RETURN NULL, DONT LOOP UNLESS YOU SURE TRUTHY
-	swap_stack((ft_dlstlast(a_stack_head)));
-	current_node = ft_dlstfirst(a_stack_head);
-	if (current_node)
-	{
-		ft_putstr_fd("\n\tchne9 krk\n", 1);
-		while (current_node)
-		{
-			ft_putstr_fd("Stack 1 : " ,1);
-			ft_putnbr_fd(current_node->index, 1);
-			ft_putstr_fd("<===>", 1);
-			ft_putnbr_fd(current_node->value, 1);
-			ft_putstr_fd("\n", 1);
-			current_node = current_node->next;
-		}
-	}
-	//ft_putstr_fd("\nStack 2\n", 1);
-	//current_node = ft_dlstfirst(b_stack_head);
-	//while (current_node)
-	//{
-	//	ft_putstr_fd("Stack 2 : " ,1);
-	//	ft_putnbr_fd(current_node->index, 1);
-	//	ft_putstr_fd("<===>", 1);
-	//	ft_putnbr_fd(current_node->value, 1);
-	//	ft_putstr_fd("\n", 1);
-	//	current_node = current_node->next;
-	//}
-	
+	ft_dlstprint(ft_dlstfirst(a_stack));
+	sort_stack_of_three(&a_stack);
+	ft_dlstprint(ft_dlstfirst(a_stack));
 	return (0);
 }
+
+/*
+Methods
+	ft_dlstprint(node)  => print stack
+			PUSH METHODS
+	push_to_stacks(**stack1, NULL)  => pa
+	push_to_stacks(NULL, **stack2)  => pb
+			SWAP METHODS
+	swap_stacks(**stack1, NULL) => sa
+	swap_stacks(NULL, **stack2) => sb
+	swap_stacks(**stack1, **stack2) => ss
+			ROTATION METHODS
+	rotate_stacks(**stack1, NULL)  => ra
+	rotate_stacks(NULL, **stack2)  => rb
+	rotate_stacks(**stack1, **stack2)  => rr
+			REVERSE ROTATION METHODS
+	rrotate_stacks(**stack1, NULL)  => rra
+	rrotate_stacks(NULL, **stack2)  => rrb
+	rrotate_stacks(**stack1, **stack2)  => rrr
+*/

@@ -6,18 +6,102 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:11 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/05 02:53:33 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/07 13:03:11 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rrotate_stack(t_dlist **stack)
+void	swap_values(t_dlist *node_1, t_dlist *node_2)
 {
+	int		temp;
+
+	temp = node_1->value;
+	node_1->value = node_2->value;
+	node_2->value = temp;
+}
+
+void	rrotate_nodes(t_dlist *node, t_dlist *prev_node)
+{
+	int			tmp;
+	int			second_tmp;
+	t_dlist		*current;
+	t_dlist		*current_prev;
+	t_dlist		*head;
+
 	
+	if (!(prev_node->prev))
+		swap_values(node, prev_node);
+	else
+	{
+		current = node;
+		head = ft_dlstfirst(node);
+		current_prev = prev_node;
+		tmp = current->value;
+		current->value = head->value;
+		current = current_prev;
+		current_prev = current_prev->prev;
+		while (current)
+		{
+			second_tmp = current->value;
+			current->value = tmp;
+			if (!current_prev)
+				break ;
+			tmp = second_tmp;
+			current = current_prev;
+			current_prev = current_prev->prev;
+		}
+	}
+}
+
+void	rrotate_stack(t_dlist *stack)
+{
+	if (!stack)
+	{
+		ft_putstr_fd("Stack Is empty No Rotate\n", 1);
+		ft_putchar_fd('\n', 1);
+		return ;
+	}
+	else if (!(stack->next) && !(stack->prev))
+	{
+		ft_putstr_fd("Only One node Rotation cant be done\n", 1);
+		return ;
+	}
+	else if (stack->prev)
+		rrotate_nodes(stack, stack->prev);
 }
 
 void	rrotate_stacks(t_dlist **first_stack, t_dlist **second_stack)
 {
-	
+	if (!first_stack && !second_stack)
+		return;
+	if (first_stack && !second_stack)
+	{
+		rrotate_stack(ft_dlstlast(*first_stack));
+		ft_putstr_fd("rra", 1);
+	}
+	else if (!first_stack && second_stack)
+	{
+		rrotate_stack(ft_dlstlast(*second_stack));
+		ft_putstr_fd("rrb", 1);
+	}
+	else
+	{
+		rrotate_stack(ft_dlstlast(*first_stack));
+		rrotate_stack(ft_dlstlast(*second_stack));
+		ft_putstr_fd("rrr", 1);
+	}
 }
+
+/*
+	Our goal is to shift down the whole stack
+	1. If stack has no nodes or one node we'll simply return
+	2. if stack has two nodes we'll swap their calues and continue 
+	3. If it has three or more nodes
+		we'll start by changing the tail's value to equal the head's
+		we'll itterate starting from the penutimate node 
+		itterating through the previous pointer
+		we'll exit once the current node is NULL
+		indicating that we've reached the absolute start of our linked list
+		at each itteration we'll store the value that we're
+*/

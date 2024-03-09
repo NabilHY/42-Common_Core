@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/05 14:35:06 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 11:30:49 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	push_to_stack(t_dlist **first_stack, t_dlist **second_stack, char stack)
 	if (!(*first_stack))
 		return ;
 	if (stack == 'A')
-		ft_putstr_fd("\npa\n", 1);
+		ft_putstr_fd("pa\n", 1);
 	else if (stack == 'B')
-		ft_putstr_fd("\npb\n", 1);
+		ft_putstr_fd("pb\n", 1);
 	return (push_ops(first_stack, second_stack));
 }
 

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:06 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/07 14:45:44 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 11:34:59 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,15 @@ void	rotate_nodes(t_dlist *node, t_dlist *next_node)
 	int			second_tmp;
 	t_dlist		*current;
 	t_dlist		*current_next;
-	t_dlist		*tail;
 
-	
 	if (!(next_node->next))
 		swap_values(node, next_node);
 	else
 	{
 		current = node;
-		tail = ft_dlstlast(node);
 		current_next = next_node;
 		tmp = current->value;
-		current->value = tail->value;
+		current->value = ft_dlstlast(node)->value;
 		current = current_next;
 		current_next = current_next->next;
 		while (current)
@@ -78,18 +75,18 @@ void	rotate_stacks(t_dlist **first_stack, t_dlist **second_stack)
 	if (first_stack && !second_stack)
 	{
 		rotate_stack(ft_dlstfirst(*first_stack));
-		ft_putstr_fd("ra", 1);
+		ft_putstr_fd("ra\n", 1);
 	}
 	else if (!first_stack && second_stack)
 	{
 		rotate_stack(ft_dlstfirst(*second_stack));
-		ft_putstr_fd("rb", 1);
+		ft_putstr_fd("rb\n", 1);
 	}
 	else
 	{
 		rotate_stack(ft_dlstfirst(*first_stack));
 		rotate_stack(ft_dlstfirst(*second_stack));
-		ft_putstr_fd("rr", 1);
+		ft_putstr_fd("rr\n", 1);
 	}
 }
 

@@ -6,13 +6,13 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:11 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/07 13:03:11 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 11:31:18 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap_values(t_dlist *node_1, t_dlist *node_2)
+static void	swap_values(t_dlist *node_1, t_dlist *node_2)
 {
 	int		temp;
 
@@ -78,18 +78,18 @@ void	rrotate_stacks(t_dlist **first_stack, t_dlist **second_stack)
 	if (first_stack && !second_stack)
 	{
 		rrotate_stack(ft_dlstlast(*first_stack));
-		ft_putstr_fd("rra", 1);
+		ft_putstr_fd("rra\n", 1);
 	}
 	else if (!first_stack && second_stack)
 	{
 		rrotate_stack(ft_dlstlast(*second_stack));
-		ft_putstr_fd("rrb", 1);
+		ft_putstr_fd("rrb\n", 1);
 	}
 	else
 	{
 		rrotate_stack(ft_dlstlast(*first_stack));
 		rrotate_stack(ft_dlstlast(*second_stack));
-		ft_putstr_fd("rrr", 1);
+		ft_putstr_fd("rrr\n", 1);
 	}
 }
 

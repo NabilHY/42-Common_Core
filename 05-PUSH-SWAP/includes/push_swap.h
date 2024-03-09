@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/07 15:30:50 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 11:40:48 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	rotate_stacks(t_dlist **first_stack, t_dlist **second_stack);
 void	rrotate_stack(t_dlist *stack);
 void	rrotate_stacks(t_dlist **first_stack, t_dlist **second_stack);
 void	swap_stacks(t_dlist **first_stack, t_dlist **second_stack);
-void	sort_stack_of_three(t_dlist **stack);
+void	sort_stack_of_three(t_dlist **stack, char s);
 #endif

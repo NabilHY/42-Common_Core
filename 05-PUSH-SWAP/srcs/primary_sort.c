@@ -6,45 +6,92 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 14:47:46 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/07 15:30:42 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 11:40:19 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	compare_and_swap(t_dlist *node, t_dlist *node_next)
+int		find_max(t_dlist *head)
 {
-	int		temp;
+	int		max;
+	t_dlist	*current;
 
-	if (node->value > node_next->value)
+	current = head;
+	max = 0;
+	while (current)
 	{
-		temp = node->value;
-		node->value  = node_next->value;
-		node_next->value = temp;
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
+}
+
+void	sort_nodes_a(t_dlist *head)
+{
+	int		max;
+
+	max = find_max(head);
+	if (head->value == max)
+	{
+		if (head->next->value > head->next->next->value)
+			swap_stacks(&head, NULL);
+		rrotate_stacks(&head, NULL);
+	}
+	else if (head->next->value == max)
+	{
+		if (head->value > head->next->next->value)
+			rotate_stacks(&head, NULL);
+		else
+			swap_stacks(&head, NULL);
+	}
+	else
+	{
+		if (head->next->value < head->value)
+		{
+			rrotate_stacks(&head, NULL);
+			swap_stacks(&head, NULL);
+		}
 	}
 }
 
-void	sort_nodes(t_dlist *head)
+void	sort_nodes_b(t_dlist *head)
 {
-	t_dlist	*current;
-	t_dlist	*current_next;
+	int		max;
 
-	compare_and_swap(head, head->next);
-	compare_and_swap(head, head->next->next);
-	compare_and_swap(head->next, head->next->next);
+	max = find_max(head);
+	if (head->value == max)
+	{
+		if (head->next->value > head->next->next->value)
+			swap_stacks(NULL, &head);
+		rrotate_stacks(NULL, &head);
+	}
+	else if (head->next->value == max)
+	{
+		if (head->value > head->next->next->value)
+			rotate_stacks(NULL, &head);
+		else
+			swap_stacks(NULL, &head);
+	}
+	else
+	{
+		if (head->next->value < head->value)
+		{
+			rrotate_stacks(NULL, &head);
+			swap_stacks(NULL, &head);
+		}
+	}
 }
 
-void	sort_stack_of_three(t_dlist **stack)
+void	sort_stack_of_three(t_dlist **stack, char s)
 {
 	t_dlist	*head;
 
 	if (!stack)
 		return ;
 	if (!(*stack))
-	{
-		ft_putstr_fd("Stack Empty\n", 1);
 		return ;
-	}
 	head = ft_dlstfirst(*stack);
 	if (!(head->next) && !(head->prev))
 	{
@@ -53,11 +100,15 @@ void	sort_stack_of_three(t_dlist **stack)
 	}
 	else if (!(head->next->next))
 	{
-		compare_and_swap(head, head->next);
+		if (head->value > head->next->value)
+			swap_stacks(&head, NULL);
 		return ;
 	}
 	else if (head->next->next->next)
 		return ;
-	sort_nodes(head);
+	if (s == 'A')
+		sort_nodes_a(head);
+	else
+		sort_nodes_b(head);
 }
 

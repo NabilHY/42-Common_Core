@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/04 23:18:06 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 16:21:55 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,18 @@ int	check_repetition(char **arr_of_args)
 	int		i;
 	int		j;
 	int		n;
+	int		first;
+	int		second;
 
 	i = 0;
 	while (arr_of_args[i])
 	{
 		j = i + 1;
+		first = ft_atoi(arr_of_args[i]);
 		while (arr_of_args[j])
 		{
-			n = ft_strlen(arr_of_args[j]);
-			if (!ft_strncmp(arr_of_args[i], arr_of_args[j], n))
+			second = ft_atoi(arr_of_args[j]);
+			if (first == second)
 				return (1);
 			j++;
 		}

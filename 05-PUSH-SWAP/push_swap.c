@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/09 12:58:48 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/10 17:28:03 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ int	main(int ac, char **av)
 	a_stack = parse_args(ac, av);
 	if (!a_stack)
 		return (0);
-	ft_dlstprint(ft_dlstfirst(a_stack), 'A');
-	sort_stack_of_three(&a_stack, 'A');
-	ft_dlstprint(ft_dlstfirst(a_stack), 'A');
+	ft_dlstprint(a_stack,'A');
+	push_swap(&a_stack, &b_stack);
+	ft_dlstprint(a_stack,'A');
+	ft_dlstprint(b_stack,'B');
 	return (0);
 }
 
 /*
 Methods :
-	ft_dlstprint(node, char 'A' OR 'B')  => print stack
+	Double Linked List Methods
+		-> ft_dlstprint(node, char 'A' OR 'B')  => print stack
+		-> t_dlist	*ft_dlstindex(t_dlist **stack, int n) => return node at
+		 with index n
 			
 			PUSH METHODS
 	push_to_stacks(**stack1, NULL)  => pa

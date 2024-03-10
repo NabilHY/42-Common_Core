@@ -5,7 +5,8 @@ SRCS = ./srcs/parsing_utilities.c \
 ./srcs/reverse_rotate.c \
 ./srcs/rotate.c \
 ./srcs/swap.c \
-./srcs/primary_sort.c
+./srcs/main_sort.c \
+./srcs/primary_sort.c 
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
 INCLUDE = ./includes/push_swap.h

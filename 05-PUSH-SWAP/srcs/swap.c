@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:40:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/09 11:41:27 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/09 14:58:52 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	swap_indexes(t_dlist *first_node, t_dlist *second_node)
 
 void	swap_nodes(t_dlist *tail, t_dlist *penultimate)
 {
-	int		temp;
-
 	swap_indexes(tail, penultimate);
 	if (penultimate->prev == NULL)
 	{

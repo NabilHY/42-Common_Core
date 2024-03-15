@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:55:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/10 20:55:33 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/13 13:50:41 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		fill_arr(t_dlist *stack, int *arr)
 	}
 }
 
+
 int		less_exist(int median, t_dlist *tail)
 {
 	while (tail)
@@ -80,49 +81,88 @@ int		less_exist(int median, t_dlist *tail)
 	return (0);
 }
 
-int			get_chunk_size(t_dlist **stack)
-{
-	t_dlist *tail_node;
-	int		i;
-
-	i = 0;
-	tail_node = ft_dlstlast(*stack);
-	if (tail_node->chunk == 1)
-	{
-		tail_node = tail_node->prev;
-		i++;
-	}
-	while (!(tail_node->prev))
-	{
-		tail_node = tail_node->prev;
-		i++;
-	}
-	return (i);
-}
-
-t_dlist		*get_chunk_node(t_dlist **stack)
-{
-	t_dlist *tail_node;
-
-	tail_node = ft_dlstlast(*stack);
-	if (tail_node->chunk == 1)
-		tail_node = tail_node->prev;
-	while (!(tail_node->prev))
-		tail_node = tail_node->prev;
-		return (tail_node);
-}
-
-void		resolve_b_chunks(t_dlist **stack_a, t_dlist **stack_b)
-{
-	int		chunk_size;
-	t_dlist	*tail_node;
-	int		stack[get_chunk_size(stack_b)];
+//void		fill_arr_with_chunk(t_dlist *stack, int *arr)
+//{
+//	t_dlist	*current_node;
+//	int		i;
 	
-	tail_node = ft_dlstlast(stack_a);
-	if (tail_node->chunk == 1 && tail_node->next->chunk == 1)
-		push_to_stack(stack_b, stack_a, 'B');
-	fill_arr(*stack);
-}
+//	i = 0;
+//	current_node = ft_dlstlast(stack);
+//	if (current_node->chunk == 1)
+//	{
+//		arr[i] = current_node->value;
+//		i++;
+//		current_node = current_node->prev;
+//	}
+//	while (current_node && !(current_node->chunk))
+//	{
+//		arr[i] = current_node->value;
+//		current_node = current_node->prev;
+//		i++;
+//	}
+//}
+//int			get_chunk_size(t_dlist **stack)
+//{
+//	t_dlist *tail_node;
+//	int		i;
+
+//	i = 0;
+//	tail_node = ft_dlstlast(*stack);
+//	if (tail_node->chunk == 1)
+//	{
+//		tail_node = tail_node->prev;
+//		i++;
+//	}
+//	while (!(tail_node->prev))
+//	{
+//		tail_node = tail_node->prev;
+//		i++;
+//	}
+//	return (i);
+//}
+
+//t_dlist		*get_chunk_node(t_dlist **stack)
+//{
+//	t_dlist *tail_node;
+
+//	tail_node = ft_dlstlast(*stack);
+//	if (tail_node->chunk == 1)
+//		tail_node = tail_node->prev;
+//	while (!(tail_node->prev))
+//		tail_node = tail_node->prev;
+//		return (tail_node);
+//}
+
+//void		push_chunk(t_dlist **stack, int	median_value, int chunk_size)
+//{
+//	t_dlist	*tail;
+//	int		i;
+
+//	i = 0;
+//	while (i < chunk_size)
+//	{
+		
+//		i++;
+//	}
+//}
+
+//void		resolve_b_chunks(t_dlist **stack_a, t_dlist **stack_b)
+//{
+//	int		chunk_size;
+//	t_dlist	*tail_node;
+//	int		median_value;
+//	int		stack_arr[get_chunk_size(stack_b)];
+	
+//	tail_node = ft_dlstlast(stack_a);
+//	if (tail_node->chunk == 1 && tail_node->next->chunk == 1)
+//	{
+//		push_to_stack(stack_b, stack_a, 'B');
+//		return ;
+//	}
+//	fill_arr_with_chunk(*stack_a ,stack_arr);
+//	median_value = stack_arr[get_chunk_size(stack_a) / 2];
+	
+//}
 
 void		ft_chunck_a(t_dlist **stack_a, t_dlist **stack_b)
 {
@@ -153,10 +193,11 @@ void		ft_chunck_a(t_dlist **stack_a, t_dlist **stack_b)
 
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b)
 {
-	while (ft_dlstsize(stack_a) > 2)
+	while (ft_dlstsize(stack_a) > 3)
 	{
-		ft_chunck_a(stack_a, stack_b);
-		ft_dlstlast(*stack_b)->chunk = 1;
+		//\ft_chunck_a(stack_a, stack_b);
+		//sort_stack_of_three(stack_a, 'A');
+		//ft_dlstlast(*stack_b)->chunk = 1;
 	}
 	
 }

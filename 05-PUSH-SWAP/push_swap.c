@@ -6,14 +6,14 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/10 17:28:03 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:54:33 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 #include "libft/libft.h"
 #include "includes/push_swap.h"
-
+ 
 int	main(int ac, char **av)
 {
 	t_dlist	*a_stack;
@@ -30,9 +30,12 @@ int	main(int ac, char **av)
 	if (!a_stack)
 		return (0);
 	ft_dlstprint(a_stack,'A');
-	push_swap(&a_stack, &b_stack);
+	sort_stack_of_three(&a_stack, 'A');
+	printf("\n<====>\n");
 	ft_dlstprint(a_stack,'A');
-	ft_dlstprint(b_stack,'B');
+	//push_swap(&a_stack, &b_stack);
+	//ft_dlstprint(a_stack,'A');
+	//ft_dlstprint(b_stack,'B');
 	return (0);
 }
 

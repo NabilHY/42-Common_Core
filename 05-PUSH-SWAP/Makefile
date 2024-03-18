@@ -6,16 +6,16 @@ SRCS = ./srcs/parsing_utilities.c \
 ./srcs/rotate.c \
 ./srcs/swap.c \
 ./srcs/main_sort.c \
-./srcs/primary_sort.c 
+./srcs/primary_sort.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
-INCLUDE = ./includes/push_swap.h
+INCLUDE = ./includes
 LIBFT_AR = ./libft/libft.a
-LIBFT_INCLUDE = ./libft/libft.h
+LIBFT_INCLUDE = ./libft
 PUSH_SWAP_AR = push_swap.a
 ENTRY = push_swap.c
 EXEC = push_swap
-FSANITIZE= -g -fsanitize=address
+#FSANITIZE= -g -fsanitize=address
 
 all: $(EXEC)
 
@@ -26,11 +26,11 @@ $(LIBFT_AR): $(LIBFT_INCLUDE)
 	@make -C libft
 
 $(EXEC): $(LIBFT_INCLUDE) $(INCLUDE) $(OBJS) $(LIBFT_AR) $(PUSH_SWAP_AR)
-	@$(CC) $(FLAGS) $(FSANITIZE) $(LIBFT_AR) $(PUSH_SWAP_AR) $(ENTRY) -o $(EXEC)
+	@$(CC) $(FLAGS) $(ENTRY) $(PUSH_SWAP_AR) $(LIBFT_AR) -o $(EXEC)
 
 %.o: %.c
-	@$(CC) $(FLAGS) -I $(INCLUDE) $(FSANITIZE) -c $< -o $@
-	
+	@$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@
+
 clean:
 	@rm -rf $(OBJS)
 	@make clean -C libft

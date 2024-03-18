@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/09 16:21:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/16 13:45:13 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,11 @@ t_dlist		*parse_args(int ac, char **av)
 {
 	int		i;
 	char 	**args_array;
+	int 	args_size;
 	t_dlist *a_stack;
-	
+
 	i = 0;
+	args_size = 0;
 	args_array = NULL;
 	a_stack = NULL;
 	if (ac != 1)
@@ -98,11 +100,13 @@ t_dlist		*parse_args(int ac, char **av)
 			ft_putstr_fd("Error\n", 1);
 			return (NULL);
 		}
+		while (args_array[args_size])
+			args_size++;
 		while (args_array[i])
 		{
-			ft_dlstadd_back(&a_stack, ft_dlstnew(i, ft_atoi(args_array[i])));
+			ft_dlstadd_front(&a_stack, ft_dlstnew(args_size-i-1, ft_atoi(args_array[i])));
 			i++;
 		}
-	}	
+	}
 	return (a_stack);
 }

@@ -1,6 +1,6 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-FSANITIZE= -g -fsanitize=address
+#FSANITIZE= -g -fsanitize=address
 SRCS = ft_isascii.c \
 ft_isalpha.c \
 ft_isdigit.c \
@@ -50,15 +50,15 @@ ft_dlstindex.c
 ft_lstmap_bonus.c
 OBJS = $(SRCS:.c=.o)
 NAME = libft.a
-INCLUDE = libft.h 
+INCLUDE = .
 
 all: $(NAME)
-  
+
 $(NAME): $(INCLUDE) $(OBJS)
-	@ar rcs $(NAME) $(OBJS) 
+	@ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	@$(CC) $(FLAGS) -I $(INCLUDE) $(FSANITIZE) -c $< -o $@
+	@$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS) $(OBJSB)

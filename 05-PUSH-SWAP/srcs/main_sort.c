@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:55:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/18 05:57:35 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/19 03:51:54 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ t_dlist		*closest_node(t_dlist *node, t_dlist **stack)
 		{
 			diff = arr[i];
 			target_node = ft_dlstindex(stack, i);
-			printf("Itteration: %d %d\n", i, diff);
 		}
 		i++;
 	}
@@ -161,11 +160,156 @@ void		set_targets(t_dlist **stack_a, t_dlist **stack_b)
 	}
 }
 
+int		get_cost(t_dlist *node)
+{
+	int cost;
+	int stack_size;
+	int index;
+	int i;
+
+	i = 0;
+	cost = 0;
+	index = node->index;
+	stack_size = ft_dlstsize(&node);
+	if (index == stack_size - 1)
+		return (0);
+	else if (index == stack_size - 2)
+		return (1);
+	else if (index == 0)
+		return (1);
+	else if (index >= (stack_size / 2))
+		while (index++ < stack_size)
+			cost++;
+	else
+		while (index-- >= 0)
+			cost++;
+	return (cost);
+}
+
+int		handle_exceptions(t_dlist *node, t_dlist *target_node)
+{
+	int first_size;
+	int first_distance;
+	int second_size;
+	int second_distance;
+	int i;
+	int cost;
+
+	first_size = ft_dlstsize(&node);
+	second_size = ft_dlstsize(&target_node);
+	cost = 0;
+	i = node->index;
+	if (target_node->index < second_size && (target_node->index == node->index))
+		while (i-- >= 0)
+			cost++;
+	else
+	{
+		first_distance = first_size - node->index;
+		second_distance = second_size - target_node->index;
+		if (first_distance == second_distance)
+			while (i++ < first_distance)
+				cost++;
+	}
+	return (cost);
+}
+
+void	set_costs(t_dlist **stack)
+{
+	int total_cost;
+	t_dlist *node;
+	t_dlist *target_node;
+	int exceptions;
+
+	node = ft_dlstfirst(*stack);
+	target_node = node->target_node;
+	while (node)
+	{
+		total_cost = handle_exceptions(node, target_node);
+		if (!total_cost)
+			total_cost = get_cost(node) + get_cost(target_node) + 1;
+		node->cost = total_cost;
+		node = node->next;
+		if (node)
+			target_node = node->target_node;
+	}
+}
+
+t_dlist		*find_cheapest(t_dlist **stack)
+{
+	t_dlist *node;
+	t_dlist *cheapest_node;
+
+	node = ft_dlstlast(*stack);
+	cheapest_node = node;
+	if (cheapest_node->cost == 1)
+		return (node);
+	else
+	{
+		while (node)
+		{
+			if (node->cost < cheapest_node->cost)
+				cheapest_node = node;
+			node = node->prev;
+		}
+	}
+	return (cheapest_node);
+}
+
+// void	sort_nodes(t_dlist *node, t_dlist *target_node)
+// {
+// 	int first_size;
+// 	int second_size;
+
+// 	first_size = ft_dlstsize(&node);
+// 	second_size = ft_dlstsize(&target_node);
+
+// 	push_to_stack(&node, &target_node, 'A');
+// }
+
+// void	sort_init(t_dlist **stack)
+// {
+// 	t_dlist *node;
+// 	t_dlist *cheapest_node;
+
+// 	cheapest_node = find_cheapest(stack);
+// 	sort_nodes(cheapest_node, cheapest_node->target_node);
+// }
+
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b)
 {
 	push_to_stack(stack_a, stack_b, 'B');
 	push_to_stack(stack_a, stack_b, 'B');
-	t_dlist *node;
-	//node = closest_node(ft_dlstlast(*stack_a), stack_b);
-	set_targets(stack_a, stack_b);
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	push_to_stack(stack_a, stack_b, 'B');
+	// while (ft_dlstsize(stack_a) > 3)
+	// {
+		//set_targets(stack_a, stack_b);
+		//set_costs(stack_a);
+		// 	sort_init(stack_a);
+	// }
+	//sort_stack_of_three(stack_a, 'A');
 }
+
+
+/*
+	if target node index is less than the size of the node stack
+	   if the distance between both of the nodes and the start of the stack
+	   is the same then we can reverse rotate until the node index is equal to 0
+	else
+	   if the distance between both of the nodes and the end of the stack
+	   is the same then we can rotate until the the node index is equal to the size
+
+*/

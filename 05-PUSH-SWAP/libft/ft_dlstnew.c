@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:49:43 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/18 03:03:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:22:52 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_dlist	*ft_dlstnew(int index, int value)
 	node->value = value;
 	node->next = NULL;
 	node->prev = NULL;
+	node->cost = __INT_MAX__;
 	node->target_node = NULL;
 	return (node);
 }

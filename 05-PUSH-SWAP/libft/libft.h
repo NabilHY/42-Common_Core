@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:06:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/18 03:03:39 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:23:12 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_dlist
 	int				index;
 	int				value;
 	struct s_dlist 	*target_node;
-	struct s_dlist *next;
+	int			 	cost;
+	struct s_dlist 	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
 

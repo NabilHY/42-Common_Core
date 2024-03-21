@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:40:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/09 14:58:52 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/20 04:50:04 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,4 @@ void	swap_stacks(t_dlist **first_stack, t_dlist **second_stack)
 		tail->p = penultimate->p
 		second_tail->n = NULL
 		second_tail->p = tail
-*/		
+*/	

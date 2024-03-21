@@ -15,7 +15,7 @@ LIBFT_INCLUDE = ./libft
 PUSH_SWAP_AR = push_swap.a
 ENTRY = push_swap.c
 EXEC = push_swap
-#FSANITIZE= -g -fsanitize=address
+FSANITIZE= -g -fsanitize=address
 
 all: $(EXEC)
 
@@ -26,7 +26,7 @@ $(LIBFT_AR): $(LIBFT_INCLUDE)
 	@make -C libft
 
 $(EXEC): $(LIBFT_INCLUDE) $(INCLUDE) $(OBJS) $(LIBFT_AR) $(PUSH_SWAP_AR)
-	@$(CC) $(FLAGS) $(ENTRY) $(PUSH_SWAP_AR) $(LIBFT_AR) -o $(EXEC)
+	@$(CC) $(FLAGS) $(ENTRY) $(FSANITIZE) $(PUSH_SWAP_AR) $(LIBFT_AR) -o $(EXEC)
 
 %.o: %.c
 	@$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@

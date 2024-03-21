@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/09 11:30:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/21 05:10:27 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
 	second_stack_tail = ft_dlstlast(*second_stack);
 	prev_tail = first_stack_tail->prev;
 	if (prev_tail)
-		prev_tail->next = NULL;
+	{
+		prev_tail->next = NULL;	
+	}
 	if (!(first_stack_tail->next) && !(first_stack_tail->prev))
 	{
 		ft_dlstadd_back(second_stack, first_stack_tail);
@@ -54,7 +56,14 @@ void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
 		*second_stack = first_stack_tail;
 	}
 	else
+	{
+		printf("stack a value%d\n", first_stack_tail->value);
+		printf("stack a value%d\n", second_stack_tail->value);
 		set_nodes(first_stack_tail, second_stack_tail, ft_dlstsize(second_stack));
+	}
+	//printf("value %d\n", ft_dlstlast(*first_stack)->value);
+	//if (ft_dlstlast(*second_stack))
+	//	printf("value %d\n", ft_dlstlast(*second_stack)->value);
 }
 
 void	push_to_stack(t_dlist **first_stack, t_dlist **second_stack, char stack)
@@ -67,7 +76,7 @@ void	push_to_stack(t_dlist **first_stack, t_dlist **second_stack, char stack)
 		ft_putstr_fd("pa\n", 1);
 	else if (stack == 'B')
 		ft_putstr_fd("pb\n", 1);
-	return (push_ops(first_stack, second_stack));
+	push_ops(first_stack, second_stack);
 }
 
 /*

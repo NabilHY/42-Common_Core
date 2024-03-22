@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:55:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/22 05:22:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:28:51 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,13 +220,7 @@ int		get_cost(t_dlist *node)
 	cost = 0;
 	index = node->index;
 	stack_size = ft_dlstsize(&node);
-	if (index == stack_size - 1)
-		return (0);
-	else if (index == stack_size - 2)
-		return (1);
-	else if (index == 0)
-		return (1);
-	else if (index >= (stack_size / 2))
+	if (index >= (stack_size / 2))
 		while (index++ < stack_size)
 			cost++;
 	else
@@ -249,15 +243,25 @@ int		handle_exceptions(t_dlist *node, t_dlist *target_node)
 	cost = 0;
 	i = node->index;
 	if (target_node->index < first_size && (target_node->index == node->index))
-		while (i-- >= 0)
+	{
+		while (i >= 0)
+		{
 			cost++;
+			i--;
+		}
+	}
 	else
 	{
 		first_distance = first_size - node->index;
 		second_distance = second_size - target_node->index;
 		if (first_distance == second_distance)
-			while (i++ < first_distance)
+		{
+			while (i < first_distance)
+			{
 				cost++;
+				i++;
+			}
+		}
 	}
 	return (cost);
 }
@@ -277,11 +281,7 @@ void	set_costs(t_dlist **stack)
 		if (total_cost)
 			total_cost++;
 		else
-		{
-			printf("%d\n", get_cost(node));
-			printf("%d\n", get_cost(target_node));
 			total_cost = get_cost(node) + get_cost(target_node) + 1;
-		}
 		node->cost = total_cost;
 		node = node->next;
 		if (node)
@@ -319,8 +319,11 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 	i = node->index;
 	if (target_node->index < ft_dlstsize(&node) && (target_node->index == node->index))
 	{
-		while (i-- >= 0)
+		while (i >= 0)
+		{
 			rrotate_stacks(&node, &target_node);
+			i--;
+		}
 		return (1);
 	}
 	else
@@ -329,8 +332,11 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 		second_distance = ft_dlstsize(&target_node) - target_node->index;
 		if ((first_distance) == (second_distance))
 		{
-			while (i++ < first_distance)
+			while (i < first_distance)
+			{
 				rotate_stacks(&node, &target_node);
+				i++;
+			}
 			return (1);
 		}
 	}
@@ -348,16 +354,18 @@ void	get_node_to_a_top(t_dlist *node)
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;
-	if (index == stack_size - 2)
-		swap_stacks(&node, NULL);
 	else if (index >= (stack_size / 2))
-	while (index++ < stack_size)
-		rotate_stacks(&node, NULL);
+		while (index < stack_size)
+		{
+			rotate_stacks(&node, NULL);
+			index++;
+		}
 	else
-	{
-		while (index-- >= 0)
+		while (index >= 0)
+		{
 			rrotate_stacks(&node, NULL);
-	}
+			index--;
+		}
 }
 
 void	get_node_to_b_top(t_dlist *node)
@@ -371,16 +379,18 @@ void	get_node_to_b_top(t_dlist *node)
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;
-	if (index == stack_size - 2)
-		swap_stacks(NULL, &node);
 	else if (index >= (stack_size / 2))
-		while (index++ < stack_size)
+		while (index < stack_size)
+		{
 			rotate_stacks(NULL ,&node);
+			index++;
+		}
 	else
-	{
-		while (index-- >= 0)
+		while (index >= 0)
+		{
 			rrotate_stacks(NULL, &node);
-	}
+			index--;
+		}
 }
 
 void	sort_a_nodes(t_dlist *node, t_dlist *target_node)
@@ -392,7 +402,7 @@ void	sort_a_nodes(t_dlist *node, t_dlist *target_node)
 	exception = sort_exception(node, target_node);
 	if (exception)
 	{
-		push_to_stack(&node, &target_node, 'B');	
+		push_to_stack(&node, &target_node, 'B');
 		return;
 	}
 	get_node_to_a_top(node);
@@ -409,7 +419,7 @@ void	sort_b_nodes(t_dlist *node, t_dlist *target_node)
 	exception = sort_exception(node, target_node);
 	if (exception)
 	{
-		push_to_stack(&node, &target_node, 'A');	
+		push_to_stack(&node, &target_node, 'A');
 		return;
 	}
 	get_node_to_b_top(node);
@@ -423,7 +433,6 @@ void sort_init(t_dlist **stack, int flag)
 	t_dlist *cheapest_node;
 
 	cheapest_node = find_cheapest(stack);
-	ft_putstr_fd("Here",1);
 	ft_putnbr_fd(cheapest_node->value, 1);
 	if	(flag)
 		sort_a_nodes(cheapest_node, cheapest_node->target_node);
@@ -444,19 +453,19 @@ void	clear_data(t_dlist **stack)
 	}
 }
 
-void	push_last_nodes(t_dlist **stack_b, t_dlist **stack_a)
+void	push_last_node(t_dlist **stack_b, t_dlist **stack_a)
 {
 	t_dlist *cheapest;
 	t_dlist	*b_node;
 	int		size;
 	int		i;
-	
+
 	b_node = ft_dlstlast(*stack_b);
 	cheapest = closest_bnode(b_node, stack_a);
-	printf("Cheacpest %d\n", cheapest->value);
-	size = ft_dlstsize(stack_a);
+	size = ft_dlstsize(stack_b);
 	i = cheapest->index;
-	if (cheapest->index < (ft_dlstsize(stack_a) / 2))
+
+	if (cheapest->index < (size / 2))
 		while (i >= 0)
 		{
 			rrotate_stacks(stack_a, NULL);
@@ -468,45 +477,28 @@ void	push_last_nodes(t_dlist **stack_b, t_dlist **stack_a)
 			rotate_stacks(stack_a, NULL);
 			i++;
 		}
-	push_to_stack(&b_node, stack_a, 'B');
+	//push_to_stack(stack_b, stack_a, 'B');
 }
 
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b)
 {
-		push_to_stack(stack_a, stack_b, 'B');
-		push_to_stack(stack_a, stack_b, 'B');
-		while (ft_dlstsize(stack_a) > 3)
-		{
-			set_targets(stack_a, stack_b, 1);
-			set_costs(stack_a);
-			sort_init(stack_a, 1);
-		}
-		sort_stack_of_three(stack_a, 'B');
-		while (ft_dlstsize(stack_b) > 2)
-		{
-			set_targets(stack_b, stack_a, 0);
-			set_costs(stack_b);
-			sort_init(stack_b, 0);
-		}
-		//push_last_nodes(stack_b, stack_a);
-		//push_last_nodes(stack_b, stack_a);
-		//sort_stack_of_three(stack_b, 'B');
-		//push_to_stack(stack_b, stack_a, 'A');
-		printf("sizesize%d\n", ft_dlstsize(stack_b));
-		//push_to_stack(stack_b, stack_a, 'A');
-		//push_to_stack(stack_b, stack_a, 'A');
-	//push_to_stack(stack_b, stack_a, 'A');
-	//sort_stack_of_three(stack_a, 'A');
-	//ft_dlstprint(*stack_b, 'B');
-	//ft_putstr_fd("<===>", 1);
-	ft_dlstprint(*stack_b, 'B');
-	//printf("%d\n", ft_dlstfirst(*stack_b)->value);
-	//push_to_stack(stack_b, stack_a, 'A');
-	//push_to_stack(stack_b, stack_a, 'A');
-	//push_to_stack(stack_b, stack_a, 'A');
-	//push_to_stack(stack_b, stack_a, 'A');
+			push_to_stack(stack_a, stack_b, 'B');
+			push_to_stack(stack_a, stack_b, 'B');
+			while (ft_dlstsize(stack_a) > 3)
+			{
+				set_targets(stack_a, stack_b, 1);
+				set_costs(stack_a);
+				sort_init(stack_a, 1);
+			}
+			sort_stack_of_three(stack_a, 'B');
+			while (ft_dlstsize(stack_b) > 1)
+			{
+				set_targets(stack_b, stack_a, 0);
+				set_costs(stack_b);
+				sort_init(stack_b, 0);
+			}
+			//push_last_node(stack_b, stack_a);
 }
-
 
 /*
 	if target node index is less than the size of the node stack

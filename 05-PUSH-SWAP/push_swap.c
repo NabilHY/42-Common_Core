@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/22 05:21:15 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 18:12:37 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	main(int ac, char **av)
 	//ft_dlstprint(a_stack,'A');
 	//sort_stack_of_three(&a_stack, 'A');
 	//printf("\n<====>\n");
-	//ft_dlstprint(a_stack,'A');
+	ft_dlstprint(a_stack,'A');
+	ft_dlstprint(b_stack,'B');
 	push_swap(&a_stack, &b_stack);
-	ft_dlstprint(a_stack, 'A');
+	ft_dlstprint(a_stack,'A');
 	ft_dlstprint(b_stack,'B');
 	return (0);
 }
@@ -58,7 +59,8 @@ Methods :
 	rotate_stacks(**stack1, NULL)  => ra
 	rotate_stacks(NULL, **stack2)  => rb
 	rotate_stacks(**stack1, **stack2)  => rr
-
+ |
+Stack : | 3 <===> -29 |
 			REVERSE ROTATION METHODS
 	rrotate_stacks(**stack1, NULL)  => rra
 	rrotate_stacks(NULL, **stack2)  => rrb

@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/22 05:35:57 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 06:36:48 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// we need to push 
+// we need to push
 
 #include "../includes/push_swap.h"
 
@@ -37,16 +37,17 @@ void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
 	first_stack_tail = ft_dlstlast(*first_stack);
 	second_stack_tail = ft_dlstlast(*second_stack);
 	prev_tail = first_stack_tail->prev;
-	
+
 	if (ft_dlstsize(first_stack) == 2)
 	{
-		second_stack_tail->next = first_stack_tail;
 		first_stack_tail->prev->next = NULL;
-		first_stack_tail->prev = second_stack_tail-
+		second_stack_tail->next = first_stack_tail;
+		first_stack_tail->prev = second_stack_tail;
+		return;
 	}
 	if (prev_tail)
 	{
-		prev_tail->next = NULL;	
+		prev_tail->next = NULL;
 	}
 	if (!(first_stack_tail->next) && !(first_stack_tail->prev))
 	{
@@ -112,7 +113,7 @@ SCENARIOS For both stacks
 			-> change tail address  (stack1->tail->prev) to NULL
 			-> Free The memory allocated for stack 1 old tail
 
-<===> 
+<===>
 
 Now that we have captured the Node
 we have to manage stack 2 side os things
@@ -120,5 +121,5 @@ we have to manage stack 2 side os things
 1. stack 2 is empty
 	-> we'll simply take the captured node and insert it using ft_dlstadd_back
 2. stack 2 has one or more nodes in it
-	-> 
+	->
 */

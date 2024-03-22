@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 14:47:46 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/21 05:30:08 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:57:01 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,29 @@ void	sort_nodes_a(t_dlist *head)
 	max = find_max(head);
 	if (head->value == max)
 	{
-		if (head->next->value > head->next->next->value)
+		
+		if (head->next->value < head->next->next->value)
 			swap_stacks(&head, NULL);
-		rrotate_stacks(&head, NULL);
 	}
 	else if (head->next->value == max)
 	{
 		if (head->value > head->next->next->value)
-			rotate_stacks(&head, NULL);
-		else
+		{
 			swap_stacks(&head, NULL);
+			rotate_stacks(&head, NULL);
+		}
+		else
+			rrotate_stacks(&head, NULL);
 	}
 	else
 	{
 		if (head->next->value < head->value)
+			rotate_stacks(&head, NULL);
+		else
 		{
-			rrotate_stacks(&head, NULL);
+			rotate_stacks(&head, NULL);
 			swap_stacks(&head, NULL);
-		}
+		}	
 	}
 }
 

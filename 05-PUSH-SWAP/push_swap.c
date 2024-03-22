@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/18 23:02:12 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 05:21:15 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 		return (0);
 	//ft_dlstprint(a_stack,'A');
 	//sort_stack_of_three(&a_stack, 'A');
-	printf("\n<====>\n");
+	//printf("\n<====>\n");
 	//ft_dlstprint(a_stack,'A');
 	push_swap(&a_stack, &b_stack);
 	ft_dlstprint(a_stack, 'A');

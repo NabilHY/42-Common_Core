@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:26:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/21 02:54:51 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/22 04:06:46 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void ft_dlstprint(t_dlist *current_node, char s)
 	current_node = ft_dlstlast(current_node);
 	while (current_node) {
 	ft_putstr_fd("Stack : | " ,1);
-		ft_putnbr_fd(current_node->index, 1);
+	if (current_node->target_node)
+		ft_putnbr_fd(current_node->cost, 1);
 	ft_putstr_fd(" <===> ", 1);
 	ft_putnbr_fd(current_node->value, 1);
 	ft_putstr_fd(" |\n", 1);

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:55:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/22 18:28:51 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/23 03:51:33 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,8 +188,8 @@ t_dlist		*closest_bnode(t_dlist *node, t_dlist **stack)
 void		set_targets(t_dlist **first_stack, t_dlist **second_stack, int flag)
 {
 	t_dlist		*stack_node;
-	//stack b === stack a
-	stack_node = ft_dlstfirst(*first_stack); // first node in stack b
+
+	stack_node = ft_dlstfirst(*first_stack);
 	if (flag)
 	{
 		while (stack_node)
@@ -208,7 +208,6 @@ void		set_targets(t_dlist **first_stack, t_dlist **second_stack, int flag)
 	}
 }
 
-
 int		get_cost(t_dlist *node)
 {
 	int cost;
@@ -219,10 +218,16 @@ int		get_cost(t_dlist *node)
 	i = 0;
 	cost = 0;
 	index = node->index;
-	stack_size = ft_dlstsize(&node);
+	stack_size = ft_dlstsize(&node) - 1;
+
+	if (index == 0)
+		return (1);
 	if (index >= (stack_size / 2))
-		while (index++ < stack_size)
+		while (index < stack_size)
+		{
+			index++;
 			cost++;
+		}
 	else
 		while (index-- >= 0)
 			cost++;
@@ -243,25 +248,15 @@ int		handle_exceptions(t_dlist *node, t_dlist *target_node)
 	cost = 0;
 	i = node->index;
 	if (target_node->index < first_size && (target_node->index == node->index))
-	{
-		while (i >= 0)
-		{
+		while (i-- >= 0)
 			cost++;
-			i--;
-		}
-	}
 	else
 	{
 		first_distance = first_size - node->index;
 		second_distance = second_size - target_node->index;
 		if (first_distance == second_distance)
-		{
-			while (i < first_distance)
-			{
+			while (i++ < first_size)
 				cost++;
-				i++;
-			}
-		}
 	}
 	return (cost);
 }
@@ -272,20 +267,18 @@ void	set_costs(t_dlist **stack)
 	t_dlist *node;
 	t_dlist *target_node;
 	int exceptions;
-
 	node = ft_dlstfirst(*stack);
-	target_node = node->target_node;
 	while (node)
 	{
+		if (node)
+			target_node = node->target_node;
 		total_cost = handle_exceptions(node, target_node);
 		if (total_cost)
-			total_cost++;
+			total_cost += 1;
 		else
 			total_cost = get_cost(node) + get_cost(target_node) + 1;
 		node->cost = total_cost;
 		node = node->next;
-		if (node)
-			target_node = node->target_node;
 	}
 }
 
@@ -313,10 +306,12 @@ t_dlist		*find_cheapest(t_dlist **stack)
 int		sort_exception(t_dlist *node, t_dlist *target_node)
 {
 	int		first_distance;
+	int		size;
 	int		second_distance;
 	int		i;
 
 	i = node->index;
+	size = ft_dlstsize(&node);
 	if (target_node->index < ft_dlstsize(&node) && (target_node->index == node->index))
 	{
 		while (i >= 0)
@@ -332,7 +327,7 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 		second_distance = ft_dlstsize(&target_node) - target_node->index;
 		if ((first_distance) == (second_distance))
 		{
-			while (i < first_distance)
+			while (i < size)
 			{
 				rotate_stacks(&node, &target_node);
 				i++;
@@ -351,8 +346,8 @@ void	get_node_to_a_top(t_dlist *node)
 
 	index = node->index;
 	value = node->value;
-	stack_size = ft_dlstsize(&node);
-	if (index == stack_size - 1)
+	stack_size = ft_dlstsize(&node) - 1;
+	if (index == stack_size)
 		return ;
 	else if (index >= (stack_size / 2))
 		while (index < stack_size)
@@ -406,7 +401,7 @@ void	sort_a_nodes(t_dlist *node, t_dlist *target_node)
 		return;
 	}
 	get_node_to_a_top(node);
-	get_node_to_a_top(target_node);
+	get_node_to_b_top(target_node);
 	push_to_stack(&node, &target_node, 'B');
 }
 
@@ -423,7 +418,7 @@ void	sort_b_nodes(t_dlist *node, t_dlist *target_node)
 		return;
 	}
 	get_node_to_b_top(node);
-	get_node_to_b_top(target_node);
+	get_node_to_a_top(target_node);
 	push_to_stack(&node, &target_node, 'A');
 }
 
@@ -433,7 +428,6 @@ void sort_init(t_dlist **stack, int flag)
 	t_dlist *cheapest_node;
 
 	cheapest_node = find_cheapest(stack);
-	ft_putnbr_fd(cheapest_node->value, 1);
 	if	(flag)
 		sort_a_nodes(cheapest_node, cheapest_node->target_node);
 	else
@@ -477,7 +471,7 @@ void	push_last_node(t_dlist **stack_b, t_dlist **stack_a)
 			rotate_stacks(stack_a, NULL);
 			i++;
 		}
-	//push_to_stack(stack_b, stack_a, 'B');
+	push_to_stack(stack_b, stack_a, 'B');
 }
 
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b)
@@ -490,13 +484,16 @@ void	push_swap(t_dlist **stack_a, t_dlist **stack_b)
 				set_costs(stack_a);
 				sort_init(stack_a, 1);
 			}
-			sort_stack_of_three(stack_a, 'B');
-			while (ft_dlstsize(stack_b) > 1)
-			{
+			sort_stack_of_three(stack_a, 'A');
+			//while (ft_dlstsize(stack_b) > 1)
+			//{
 				set_targets(stack_b, stack_a, 0);
 				set_costs(stack_b);
-				sort_init(stack_b, 0);
-			}
+			sort_init(stack_b, 0);
+							set_targets(stack_b, stack_a, 0);
+				set_costs(stack_b);
+			//sort_init(stack_b, 0);
+			//}
 			//push_last_node(stack_b, stack_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:10:28 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/23 05:22:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/23 19:21:50 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 
 	i = node->index;
 	size = ft_dlstsize(&node);
-	if (target_node->index < ft_dlstsize(&node) && (target_node->index == node->index))
+	if (target_node->index < size && (target_node->index == node->index))
 	{
 		while (i >= 0)
 		{
@@ -34,8 +34,9 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 	{
 		first_distance = ft_dlstsize(&node) - node->index;
 		second_distance = ft_dlstsize(&target_node) - target_node->index;
-		if ((first_distance) == (second_distance))
+		if ((first_distance) == (second_distance) && node->cost != 1)
 		{
+			i = node->index;
 			while (i < size)
 			{
 				rotate_stacks(&node, &target_node);
@@ -55,8 +56,8 @@ void	get_node_to_a_top(t_dlist *node)
 
 	index = node->index;
 	value = node->value;
-	stack_size = ft_dlstsize(&node) - 1;
-	if (index == stack_size)
+	stack_size = ft_dlstsize(&node);
+	if (index == stack_size - 1)
 		return ;
 	else if (index >= (stack_size / 2))
 		while (index < stack_size)
@@ -74,12 +75,10 @@ void	get_node_to_a_top(t_dlist *node)
 
 void	get_node_to_b_top(t_dlist *node)
 {
-	int	value;
 	int	stack_size;
 	int	index;
 
 	index = node->index;
-	value = node->value;
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;

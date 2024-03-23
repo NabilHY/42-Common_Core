@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:06:44 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/23 05:09:32 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/23 18:40:48 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		get_cost(t_dlist *node)
 
 	if (index == 0)
 		return (1);
+	else if (index == stack_size - 1)
+		return (0);
 	if (index >= (stack_size / 2))
 		while (index < stack_size)
 		{
@@ -33,8 +35,11 @@ int		get_cost(t_dlist *node)
 			cost++;
 		}
 	else
-		while (index-- >= 0)
+		while (index >= 0)
+		{
+			index--;
 			cost++;
+		}
 	return (cost);
 }
 
@@ -51,6 +56,8 @@ int		handle_exceptions(t_dlist *node, t_dlist *target_node)
 	second_size = ft_dlstsize(&target_node);
 	cost = 0;
 	i = node->index;
+	if (i == first_size - 1 && target_node->index == second_size - 1)
+		return (0);
 	if (target_node->index < first_size && (target_node->index == node->index))
 		while (i-- >= 0)
 			cost++;
@@ -58,7 +65,7 @@ int		handle_exceptions(t_dlist *node, t_dlist *target_node)
 	{
 		first_distance = first_size - node->index;
 		second_distance = second_size - target_node->index;
-		if (first_distance == second_distance)
+		if (first_distance == second_distance && node->index != first_distance - 1)
 			while (i++ < first_size)
 				cost++;
 	}
@@ -71,6 +78,8 @@ void	set_costs(t_dlist **stack)
 	t_dlist *node;
 	t_dlist *target_node;
 	int exceptions;
+
+	total_cost = 0;
 	node = ft_dlstfirst(*stack);
 	while (node)
 	{

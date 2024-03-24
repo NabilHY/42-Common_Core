@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:10:28 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/23 19:21:50 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/24 04:09:59 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		sort_exception(t_dlist *node, t_dlist *target_node)
 	{
 		first_distance = ft_dlstsize(&node) - node->index;
 		second_distance = ft_dlstsize(&target_node) - target_node->index;
-		if ((first_distance) == (second_distance) && node->cost != 1)
+		if ((first_distance) == (second_distance) && node->index != size - 1)
 		{
 			i = node->index;
 			while (i < size)
@@ -59,7 +59,8 @@ void	get_node_to_a_top(t_dlist *node)
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;
-	else if (index >= (stack_size / 2))
+		
+	if (index > (stack_size / 2))
 		while (index < stack_size)
 		{
 			rotate_stacks(&node, NULL);
@@ -82,7 +83,8 @@ void	get_node_to_b_top(t_dlist *node)
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;
-	else if (index >= (stack_size / 2))
+
+	if (index > (stack_size / 2))
 		while (index < stack_size)
 		{
 			rotate_stacks(NULL ,&node);
@@ -130,14 +132,19 @@ void	sort_b_nodes(t_dlist *node, t_dlist *target_node)
 	push_to_stack(&node, &target_node, 'A');
 }
 
-void sort_init(t_dlist **stack, int flag)
+void sort_init(t_dlist **first_stack, t_dlist **second_stack, int flag)
 {
 	t_dlist *node;
 	t_dlist *cheapest_node;
 
-	cheapest_node = find_cheapest(stack);
 	if	(flag)
+	{
+		cheapest_node = find_cheapest(first_stack);
 		sort_a_nodes(cheapest_node, cheapest_node->target_node);
+	}
 	else
+	{
+		cheapest_node = find_cheapest(first_stack);
 		sort_b_nodes(cheapest_node, cheapest_node->target_node);
+	}
 }

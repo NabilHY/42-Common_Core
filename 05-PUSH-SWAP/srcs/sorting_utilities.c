@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 04:04:57 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/23 05:01:00 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/25 19:13:32 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void		fill_arr(t_dlist **stack, int *arr)
 	i = 0;
 	node = *stack;
 	last_index = ft_dlstsize(stack);
-	while (i < last_index && node)
+	while (i < last_index)
 	{
 		arr[i] = node->value;
 		node = node->next;
 		i++;
 	}
 }
-  
+
 void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
 {
 	int		i;
@@ -51,7 +51,7 @@ void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
 		i++;
 	}
 }
- 
+
 int			max_value(t_dlist **stack)
 {
 	int stack_arr[ft_dlstsize(stack)];

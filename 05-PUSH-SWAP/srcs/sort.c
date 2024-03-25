@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:10:28 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/24 04:09:59 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/25 19:08:19 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_node_to_a_top(t_dlist *node)
 	stack_size = ft_dlstsize(&node);
 	if (index == stack_size - 1)
 		return ;
-		
+
 	if (index > (stack_size / 2))
 		while (index < stack_size)
 		{
@@ -121,12 +121,12 @@ void	sort_b_nodes(t_dlist *node, t_dlist *target_node)
 	int second_size;
 	int	exception;
 
-	exception = sort_exception(node, target_node);
-	if (exception)
-	{
-		push_to_stack(&node, &target_node, 'A');
-		return;
-	}
+	// exception = sort_exception(node, target_node);
+	// if (exception)
+	// {
+	// 	push_to_stack(&node, &target_node, 'A');
+	// 	return;
+	// }
 	get_node_to_b_top(node);
 	get_node_to_a_top(target_node);
 	push_to_stack(&node, &target_node, 'A');
@@ -144,7 +144,7 @@ void sort_init(t_dlist **first_stack, t_dlist **second_stack, int flag)
 	}
 	else
 	{
-		cheapest_node = find_cheapest(first_stack);
+		cheapest_node = ft_dlstlast(*first_stack);
 		sort_b_nodes(cheapest_node, cheapest_node->target_node);
 	}
 }

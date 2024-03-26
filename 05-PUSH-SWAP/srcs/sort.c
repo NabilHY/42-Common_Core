@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 05:10:28 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/25 19:08:19 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/26 06:42:50 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	get_node_to_a_top(t_dlist *node)
 			rrotate_stacks(&node, NULL);
 			index--;
 		}
+
 }
 
 void	get_node_to_b_top(t_dlist *node)
@@ -121,13 +122,19 @@ void	sort_b_nodes(t_dlist *node, t_dlist *target_node)
 	int second_size;
 	int	exception;
 
-	// exception = sort_exception(node, target_node);
-	// if (exception)
-	// {
-	// 	push_to_stack(&node, &target_node, 'A');
-	// 	return;
-	// }
+	exception = sort_exception(node, target_node);
+	if (exception)
+	{
+		push_to_stack(&node, &target_node, 'A');
+		return;
+	}
 	get_node_to_b_top(node);
+	get_node_to_a_top(target_node);
+	push_to_stack(&node, &target_node, 'A');
+}
+
+void	last_b_node(t_dlist *node, t_dlist *target_node)
+{
 	get_node_to_a_top(target_node);
 	push_to_stack(&node, &target_node, 'A');
 }

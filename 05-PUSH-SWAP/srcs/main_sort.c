@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:55:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/24 04:05:53 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/26 05:56:19 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void		push_swap(t_dlist **stack_a, t_dlist **stack_b)
 		 	sort_init(stack_b, stack_a ,0);
 		}
 		last_node = ft_dlstfirst(*stack_b);
-		sort_b_nodes(last_node, closest_bnode(last_node, stack_a));
+		last_b_node(last_node, closest_bnode(last_node, stack_a));
 }

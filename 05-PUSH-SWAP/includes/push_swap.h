@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/24 03:42:38 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/26 04:50:14 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ int			min_value(t_dlist **stack);
 int			max_value(t_dlist **stack);
 t_dlist		*closest_bnode(t_dlist *node, t_dlist **stack);
 void	sort_b_nodes(t_dlist *node, t_dlist *target_node);
+void	last_b_node(t_dlist *node, t_dlist *target_node);
 #endif

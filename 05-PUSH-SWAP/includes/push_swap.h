@@ -6,18 +6,19 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 02:02:41 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 02:50:05 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+# include <limits.h>
 t_dlist	*parse_args(int ac, char **av);
 int		check_args(char **arr_of_args);
 void	free_arr(char **arr);
 int		check_repetition(char **arr_of_args);
-void	push_to_stack(t_dlist **first_stack, t_dlist **second_stack, char stack);
+void	push(t_dlist **first_stack, t_dlist **second_stack, char stack);
 void	rotate_stack(t_dlist *stack);
 void	rotate_stacks(t_dlist **first_stack, t_dlist **second_stack);
 void	rrotate_stack(t_dlist *stack);
@@ -25,10 +26,10 @@ void	rrotate_stacks(t_dlist **first_stack, t_dlist **second_stack);
 void	swap_stacks(t_dlist **first_stack, t_dlist **second_stack);
 void	tiny_sort(t_dlist **stack);
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b);
-void		fill_arr(t_dlist **stack, int *arr);
-void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr);
-int			min_value(t_dlist **stack);
-int			max_value(t_dlist **stack);
+void	fill_arr(t_dlist **stack, int *arr);
+void	fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr);
+int		min_value(t_dlist **stack);
+int		max_value(t_dlist **stack);
 void	tiny_sort(t_dlist **stack);
 
 #endif

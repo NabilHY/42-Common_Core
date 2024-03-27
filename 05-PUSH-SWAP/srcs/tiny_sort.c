@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 01:58:05 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 02:33:37 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		find_max(t_dlist *head)
 	t_dlist	*current;
 
 	current = head;
-	max = 0;
+	max = INT_MIN;
 	while (current)
 	{
 		if (current->value > max)
@@ -70,10 +70,7 @@ void	tiny_sort(t_dlist **stack)
 		return ;
 	head = ft_dlstfirst(*stack);
 	if (!(head->next) && !(head->prev))
-	{
-		ft_putstr_fd("No sorting has been done, stack has one node\n", 1);
 		return ;
-	}
 	else if (!(head->next->next))
 	{
 		if (head->value > head->next->value)

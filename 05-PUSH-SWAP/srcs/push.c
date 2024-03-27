@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/22 06:36:48 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 02:56:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,23 @@ void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
 {
 	t_dlist *first_stack_tail;
 	t_dlist *second_stack_tail;
-	t_dlist	*prev_tail;
+	if (!(*first_stack) || !(*second_stack))
+		return ;
 
 	first_stack_tail = ft_dlstlast(*first_stack);
 	second_stack_tail = ft_dlstlast(*second_stack);
-	prev_tail = first_stack_tail->prev;
-
 	if (ft_dlstsize(first_stack) == 2)
 	{
 		first_stack_tail->prev->next = NULL;
 		second_stack_tail->next = first_stack_tail;
 		first_stack_tail->prev = second_stack_tail;
-		return;
+		return ;
 	}
-	if (prev_tail)
-	{
-		prev_tail->next = NULL;
-	}
+	if (first_stack_tail->prev)
+		first_stack_tail->prev->next = NULL;
 	if (!(first_stack_tail->next) && !(first_stack_tail->prev))
 	{
 		ft_dlstadd_back(second_stack, first_stack_tail);
-		ft_putstr_fd("Empty Stack\n", 1);
 		*first_stack = NULL;
 	}
 	if (!second_stack_tail)
@@ -62,12 +58,9 @@ void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
 	}
 	else
 		set_nodes(first_stack_tail, second_stack_tail, ft_dlstsize(second_stack));
-	//printf("value %d\n", ft_dlstlast(*first_stack)->value);
-	//if (ft_dlstlast(*second_stack))
-	//	printf("value %d\n", ft_dlstlast(*second_stack)->value);
 }
 
-void	push_to_stack(t_dlist **first_stack, t_dlist **second_stack, char stack)
+void	push(t_dlist **first_stack, t_dlist **second_stack, char stack)
 {
 	if (!first_stack || !second_stack)
 		return ;

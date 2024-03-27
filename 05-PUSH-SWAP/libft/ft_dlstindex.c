@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:12:40 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/10 11:29:47 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 02:26:41 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ t_dlist		*ft_dlstindex(t_dlist **stack, int index)
 	int		i;
 
 	i = 0;
-	if (!stack)
-		return (NULL);
-	if (!(*stack))
+	if (!stack || !(*stack))
 		return (NULL);
 	head = ft_dlstfirst(*stack);
 	while (i < index && head->next)
@@ -28,5 +26,7 @@ t_dlist		*ft_dlstindex(t_dlist **stack, int index)
 		head = head->next;
 		i++;
 	}
+	if (i < index)
+		return (NULL);
 	return (head);
 }

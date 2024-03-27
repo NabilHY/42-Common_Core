@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 04:04:57 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/25 19:13:32 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 01:38:49 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
 	int		i;
 	int		last_index;
 	t_dlist *target_node;
-	int 	dif;
 
 	if (!arr || !stack || !node)
 		return ;

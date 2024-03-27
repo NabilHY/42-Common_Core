@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/16 13:45:13 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/27 01:38:27 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	check_repetition(char **arr_of_args)
 {
 	int		i;
 	int		j;
-	int		n;
 	int		first;
 	int		second;
 

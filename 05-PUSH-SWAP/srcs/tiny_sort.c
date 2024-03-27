@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   primary_sort.c                                     :+:      :+:    :+:   */
+/*   tiny_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 14:47:46 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/25 18:57:01 by nhayoun          ###   ########.fr       */
+/*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
+/*   Updated: 2024/03/27 01:58:05 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		find_max(t_dlist *head)
 	return (max);
 }
 
-void	sort_nodes_a(t_dlist *head)
+void	sort_nodes(t_dlist *head)
 {
 	int		max;
 
@@ -60,7 +60,7 @@ void	sort_nodes_a(t_dlist *head)
 	}
 }
 
-void	sort_stack_of_three(t_dlist **stack, char s)
+void	tiny_sort(t_dlist **stack)
 {
 	t_dlist	*head;
 
@@ -82,6 +82,5 @@ void	sort_stack_of_three(t_dlist **stack, char s)
 	}
 	else if (head->next->next->next)
 		return ;
-	sort_nodes_a(head);
+	sort_nodes(head);
 }
-

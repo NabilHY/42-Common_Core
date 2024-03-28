@@ -6,11 +6,53 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 09:23:45 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 23:10:49 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+long	ft_atol(char *str)
+{
+	int					i;
+	int					sign;
+	long				result;
+
+	i = 0;
+	sign = 1;
+	while (str[i] <= 32)
+		i++;
+	result = 0;
+	if (str[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (ft_isdigit(str[i]))
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
+}
+
+int		in_range(char **args)
+{
+	long	number;
+	int		i;
+
+	i = 0;
+	while (args[i])
+	{
+		number = ft_atol(args[i]);
+		if (number > INT_MAX || number < INT_MIN)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int		args_num(int ac, char **av)
 {
@@ -130,7 +172,7 @@ t_dlist		*parse_args(int ac, char **av)
 			args_array = ft_split(av[1], 32);
 		else
 			args_array = ft_sets(ac, av);
-		if (!check_args(args_array) || check_repetition(args_array))
+		if (!check_args(args_array) || check_repetition(args_array) || !in_range(args_array))
 			return (handle_fail(args_array));
 		while (args_array[i])
 		{

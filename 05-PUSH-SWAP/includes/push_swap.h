@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 02:25:23 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 09:24:47 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	rotate(t_dlist **first_stack, t_dlist **second_stack);
 void	rrotate(t_dlist **first_stack, t_dlist **second_stack);
 void	swap(t_dlist **first_stack, t_dlist **second_stack);
 void	update_indexes(t_dlist **stack);
-void	tiny_sort(t_dlist **stack);
 void	push_swap(t_dlist **stack_a, t_dlist **stack_b);
 void	fill_arr(t_dlist **stack, int *arr);
 void	fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr);
 int		min_value(t_dlist **stack);
 int		max_value(t_dlist **stack);
 void	tiny_sort(t_dlist **stack);
-
+void    free_stack(t_dlist **stack);
+void    free_arr(char **arr);
+t_dlist *handle_fail(char **arr);
+void    free_stack(t_dlist **stack);
 #endif

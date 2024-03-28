@@ -5,10 +5,11 @@ SRCS = ./srcs/parsing_utilities.c \
 ./srcs/reverse_rotate.c \
 ./srcs/swap.c \
 ./srcs/sorting_utilities.c \
-./srcs/big_sort.c \
+./srcs/algo.c \
 ./srcs/tiny_sort.c \
 ./srcs/rotate.c	\
-./srcs/utils.c
+./srcs/utils.c \
+./srcs/free.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
 INCLUDE = ./includes

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 00:50:17 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 03:36:14 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int ac, char **av)
 	if (!a_stack)
 		return (0);
 	push_swap(&a_stack, &b_stack);
+	free_stack(&a_stack);
 	return (0);
 }
 

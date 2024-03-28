@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstadd_back.c                                  :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-
-/*   Created: 2024/03/01 11:32:49 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/01 12:45:10 by nhayoun          ###   ########.fr       */
+/*   Created: 2024/03/28 02:21:26 by nhayoun           #+#    #+#             */
+/*   Updated: 2024/03/28 02:29:20 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-void	ft_dlstadd_back(t_dlist **dlst, t_dlist *new)
+void	update_indexes(t_dlist **stack)
 {
-	t_dlist	*tail;
+	t_dlist	*node;
+	int	i;
 
-	if (!dlst || !new)
-		return ;
-	if (!(*dlst))
+	i = 0;
+	node = ft_dlstfirst(*stack);
+	while (node)
 	{
-		*dlst = new;
-		return ;
+		node->index = i;
+		i++;
+		node = node->next;
 	}
-	tail = ft_dlstlast(*dlst);
-	new->prev = tail;
-	tail->next = new;
 }

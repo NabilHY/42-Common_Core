@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:11 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/20 05:17:16 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 02:29:00 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,17 @@ void	rrotate_nodes(t_dlist *node, t_dlist *prev_node)
 			current_prev = current_prev->prev;
 		}
 	}
+	update_indexes(&node);
 }
 
 void	rrotate_stack(t_dlist *stack)
 {
-	if (!stack)
-	{
-		ft_putstr_fd("Stack Is empty No Rotate\n", 1);
-		ft_putchar_fd('\n', 1);
+	if (!stack || (!(stack->next) && !(stack->prev)))
 		return ;
-	}
-	else if (!(stack->next) && !(stack->prev))
-	{
-		ft_putstr_fd("Only One node Rotation cant be done\n", 1);
-		return ;
-	}
-	else if (stack->prev)
-		rrotate_nodes(stack, stack->prev);
+	rrotate_nodes(stack, stack->prev);
 }
 
-void	rrotate_stacks(t_dlist **first_stack, t_dlist **second_stack)
+void	rrotate(t_dlist **first_stack, t_dlist **second_stack)
 {
 	if (!first_stack && !second_stack)
 		return;

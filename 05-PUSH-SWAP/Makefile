@@ -3,12 +3,12 @@ FLAGS = -Wall -Wextra -Werror
 SRCS = ./srcs/parsing_utilities.c \
 ./srcs/push.c \
 ./srcs/reverse_rotate.c \
-./srcs/rotate.c \
 ./srcs/swap.c \
 ./srcs/sorting_utilities.c \
 ./srcs/big_sort.c \
-./srcs/tiny_sort.c
-
+./srcs/tiny_sort.c \
+./srcs/rotate.c	\
+./srcs/utils.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
 INCLUDE = ./includes

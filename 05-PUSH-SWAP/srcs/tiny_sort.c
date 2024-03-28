@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 02:33:37 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 02:29:43 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ void	sort_nodes(t_dlist *head)
 	if (head->value == max)
 	{
 		if (head->next->value < head->next->next->value)
-			swap_stacks(&head, NULL);
+			swap(&head, NULL);
 	}
 	else if (head->next->value == max)
 	{
 		if (head->value > head->next->next->value)
 		{
-			swap_stacks(&head, NULL);
-			rotate_stacks(&head, NULL);
+			swap(&head, NULL);
+			rotate(&head, NULL);
 		}
 		else
-			rrotate_stacks(&head, NULL);
+			rrotate(&head, NULL);
 	}
 	else
 	{
 		if (head->next->value < head->value)
-			rotate_stacks(&head, NULL);
+			rotate(&head, NULL);
 		else
 		{
-			rotate_stacks(&head, NULL);
-			swap_stacks(&head, NULL);
+			rotate(&head, NULL);
+			swap(&head, NULL);
 		}
 	}
 }
@@ -74,7 +74,7 @@ void	tiny_sort(t_dlist **stack)
 	else if (!(head->next->next))
 	{
 		if (head->value > head->next->value)
-			swap_stacks(&head, NULL);
+			swap(&head, NULL);
 		return ;
 	}
 	else if (head->next->next->next)

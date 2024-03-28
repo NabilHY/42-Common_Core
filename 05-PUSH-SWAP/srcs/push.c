@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 02:56:56 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 01:00:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,35 @@
 
 #include "../includes/push_swap.h"
 
-void	set_first_node(t_dlist *node)
+void	move_node_to_stack(t_dlist **source_stack, t_dlist **dest_stack)
 {
-	node->index = 0;
-	node->prev = NULL;
-	node->next = NULL;
-}
+	t_dlist		*last_node;
 
-void	set_nodes(t_dlist *first_node, t_dlist *second_node, int index)
-{
-	first_node->prev = second_node;
-	second_node->next = first_node;
-	first_node->index = index;
-}
-
-void	push_ops(t_dlist **first_stack, t_dlist **second_stack)
-{
-	t_dlist *first_stack_tail;
-	t_dlist *second_stack_tail;
-	if (!(*first_stack) || !(*second_stack))
+	if (!source_stack || !(*source_stack))
 		return ;
-
-	first_stack_tail = ft_dlstlast(*first_stack);
-	second_stack_tail = ft_dlstlast(*second_stack);
-	if (ft_dlstsize(first_stack) == 2)
-	{
-		first_stack_tail->prev->next = NULL;
-		second_stack_tail->next = first_stack_tail;
-		first_stack_tail->prev = second_stack_tail;
+	last_node = ft_dlstlast(*source_stack);
+	if (!last_node)
 		return ;
-	}
-	if (first_stack_tail->prev)
-		first_stack_tail->prev->next = NULL;
-	if (!(first_stack_tail->next) && !(first_stack_tail->prev))
+	if (last_node->prev)
 	{
-		ft_dlstadd_back(second_stack, first_stack_tail);
-		*first_stack = NULL;
-	}
-	if (!second_stack_tail)
-	{
-		set_first_node(first_stack_tail);
-		*second_stack = first_stack_tail;
+		last_node->prev->next = NULL;
+		last_node->prev = NULL;
 	}
 	else
-		set_nodes(first_stack_tail, second_stack_tail, ft_dlstsize(second_stack));
+		*source_stack = NULL;
+	ft_dlstadd_back(dest_stack, last_node);
 }
 
 void	push(t_dlist **first_stack, t_dlist **second_stack, char stack)
 {
-	if (!first_stack || !second_stack)
+	if (!first_stack || !second_stack || !*first_stack)
 		return ;
-	if (!(*first_stack))
-		return ;
+
 	if (stack == 'A')
 		ft_putstr_fd("pa\n", 1);
 	else if (stack == 'B')
 		ft_putstr_fd("pb\n", 1);
-	push_ops(first_stack, second_stack);
+	move_node_to_stack(first_stack, second_stack);
 }
 
 /*

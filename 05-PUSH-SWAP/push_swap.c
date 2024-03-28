@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 02:00:05 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 00:50:17 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,9 @@ int	main(int ac, char **av)
 {
 	t_dlist	*a_stack;
 	t_dlist *b_stack;
-	char	**arr_of_args;
-	int		ops;
 
-	ops = 0;
 	a_stack = NULL;
 	b_stack = NULL;
-	arr_of_args = NULL;
-
 	a_stack = parse_args(ac, av);
 	if (!a_stack)
 		return (0);

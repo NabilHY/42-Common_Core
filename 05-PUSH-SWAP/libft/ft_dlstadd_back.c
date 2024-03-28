@@ -19,12 +19,13 @@ void	ft_dlstadd_back(t_dlist **dlst, t_dlist *new)
 
 	if (!dlst || !new)
 		return ;
-	if (!*dlst)
+	if (!(*dlst))
 	{
 		*dlst = new;
 		return ;
 	}
 	tail = ft_dlstlast(*dlst);
+	new->index = ft_dlstsize(dlst);
 	new->prev = tail;
 	tail->next = new;
 }

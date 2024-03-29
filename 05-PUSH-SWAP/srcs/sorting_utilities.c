@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 04:04:57 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 23:22:56 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/29 04:45:49 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int			is_sorted(t_dlist **stack)
 		return (0);
 	while (head)
 	{
-		if (head->value > head->next->value)
+		if (head->value < head->next->value)
 			return (0);
 		head = head->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 19:59:51 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 23:19:24 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/29 02:23:27 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	move_node_to_stack(t_dlist **source_stack, t_dlist **dest_stack)
 	else
 		*source_stack = NULL;
 	ft_dlstadd_back(dest_stack, last_node);
+	update_indexes(source_stack);
 	update_indexes(dest_stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 09:24:47 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/28 23:18:47 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void    free_stack(t_dlist **stack);
 void    free_arr(char **arr);
 t_dlist *handle_fail(char **arr);
 void    free_stack(t_dlist **stack);
+int			is_sorted(t_dlist **stack);
 #endif

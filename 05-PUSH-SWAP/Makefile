@@ -9,7 +9,8 @@ SRCS = ./srcs/parsing_utilities.c \
 ./srcs/tiny_sort.c \
 ./srcs/rotate.c	\
 ./srcs/utils.c \
-./srcs/free.c
+./srcs/free.c \
+./srcs/target.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
 INCLUDE = ./includes

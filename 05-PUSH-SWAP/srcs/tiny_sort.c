@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 02:29:43 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/29 00:20:38 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ void	tiny_sort(t_dlist **stack)
 {
 	t_dlist	*head;
 
-	if (!stack)
-		return ;
-	if (!(*stack))
+	if (!stack || !(*stack) || is_sorted(stack))
 		return ;
 	head = ft_dlstfirst(*stack);
 	if (!(head->next) && !(head->prev))

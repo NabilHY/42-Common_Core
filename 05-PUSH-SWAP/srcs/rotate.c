@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:06 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 02:28:48 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:11:45 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap_values(t_dlist *node_1, t_dlist *node_2)
 {
-	int		temp;
+	int	temp;
 
 	temp = node_1->value;
 	node_1->value = node_2->value;
@@ -23,10 +23,10 @@ void	swap_values(t_dlist *node_1, t_dlist *node_2)
 
 void	rotate_nodes(t_dlist *node, t_dlist *next_node)
 {
-	int			tmp;
-	int			second_tmp;
-	t_dlist		*current;
-	t_dlist		*current_next;
+	int		tmp;
+	int		second_tmp;
+	t_dlist	*current;
+	t_dlist	*current_next;
 
 	if (!(next_node->next))
 		swap_values(node, next_node);
@@ -62,7 +62,7 @@ void	rotate_stack(t_dlist *stack)
 void	rotate(t_dlist **first_stack, t_dlist **second_stack)
 {
 	if (!first_stack && !second_stack)
-		return;
+		return ;
 	if (first_stack && !second_stack)
 	{
 		rotate_stack(ft_dlstfirst(*first_stack));

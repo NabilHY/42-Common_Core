@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:40:16 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 02:32:23 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:31:51 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	swap_nodes(t_dlist *tail, t_dlist *penultimate)
 		penultimate->next = NULL;
 		tail->next = penultimate;
 		tail->prev = NULL;
-
 	}
 	else
 	{
@@ -65,14 +64,13 @@ void	swap(t_dlist **first_stack, t_dlist **second_stack)
 	}
 }
 
-
 /*
-	we'll swap the two top most nodes 0 the swap stack function is gonna take 
+	we'll swap the two top most nodes 0 the swap stack function is gonna take
 	Function swap stack will be taking a PTR to PTR t_dlist (t_dlist tail)
 	==> Possible scenarios :
 		1. There are no nodes
 			if stack head is NULL;
-			Do nothing and return;
+			Do nothing and return ;
 		2. There is one node
 			The passed node next and prev pointers are NULL
 			!tail->prev && !tail->next
@@ -83,10 +81,10 @@ void	swap(t_dlist **first_stack, t_dlist **second_stack)
 				it's data would be : tail->next = NULL; and tail->prev = head;
 			We'll twitch the nodes ptrs to point to each other by chaging their order
 			we'll make sure not to manipulate their addresses by mistake
-			we'll do it through the following order	
+			we'll do it through the following order
 				head->prev=head; tail->next=head; head->next=N; tail->prev=N;
 				as for the index we'll simply assign 0  and 1
-			
+
 		4. There are three or more nodes
 		we managed to get this far so theres are more than three
 		we swap the pointers value
@@ -94,4 +92,4 @@ void	swap(t_dlist **first_stack, t_dlist **second_stack)
 		tail->p = penultimate->p
 		second_tail->n = NULL
 		second_tail->p = tail
-*/	
+*/

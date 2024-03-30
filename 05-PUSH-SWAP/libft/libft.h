@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:06:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/18 17:23:12 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:30:34 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ typedef struct s_dlist
 {
 	int				index;
 	int				value;
-	struct s_dlist 	*target_node;
-	int			 	cost;
-	struct s_dlist 	*next;
+	struct s_dlist	*target_node;
+	int				cost;
+	struct s_dlist	*next;
 	struct s_dlist	*prev;
 }					t_dlist;
 
@@ -109,7 +109,7 @@ t_dlist				*ft_dlstfirst(t_dlist *dlst);
 
 int					ft_dlstsize(t_dlist **dlist_start);
 
-void 				ft_dlstprint(t_dlist *current_node, char s);
+void				ft_dlstprint(t_dlist *current_node, char s);
 
 t_dlist				*ft_dlstindex(t_dlist **stack, int index);
 

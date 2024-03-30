@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 17:18:39 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 03:36:14 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:32:06 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int ac, char **av)
 {
 	t_dlist	*a_stack;
-	t_dlist *b_stack;
+	t_dlist	*b_stack;
 
 	a_stack = NULL;
 	b_stack = NULL;
@@ -33,7 +33,7 @@ Methods :
 	Double Linked List Methods
 		-> ft_dlstprint(node, char 'A' OR 'B')  => print stack
 		-> t_dlist	*ft_dlstindex(t_dlist **stack, int n) => return node at
-		 with index n
+			with index n
 
 			PUSH METHODS
 	push_to_stacks(**stack1, NULL)  => pa

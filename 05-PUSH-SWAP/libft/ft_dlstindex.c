@@ -6,13 +6,13 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:12:40 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/27 02:26:41 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:25:31 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_dlist		*ft_dlstindex(t_dlist **stack, int index)
+t_dlist	*ft_dlstindex(t_dlist **stack, int index)
 {
 	t_dlist	*head;
 	int		i;

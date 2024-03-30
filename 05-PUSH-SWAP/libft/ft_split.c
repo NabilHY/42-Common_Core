@@ -6,11 +6,12 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:20:35 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/02/27 17:00:20 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 11:44:03 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static int	is_delimiter(char c, char d)
 {
 	return (d == c);
@@ -78,25 +79,7 @@ char	**split_string(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	if (!s)
+	if (!s || !(*s))
 		return (NULL);
 	return (split_string(s, c));
 }
-
-/*int	main(void)
-{
-	int i;
-	char c;
-	char s[] = "@@@@@@@Hel@The@@";
-	char **strs;
-
-	c = '@';
-	i = 0;
-	strs = ft_split(s, c);
-	while (strs[i])
-	{
-		printf("%s\n", strs[i]);
-		i++;
-	}
-	return (0);
-}*/

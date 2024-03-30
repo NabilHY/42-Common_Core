@@ -6,11 +6,12 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:12:08 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/02/27 17:00:20 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:29:41 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
@@ -22,7 +23,7 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i++], fd);
 }
 /*
-int	main()
+int	main(void)
 {
 	char str[] = "Print this";
 	ft_putstr_fd(str, 1);

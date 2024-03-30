@@ -6,11 +6,12 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:02:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/02/27 17:00:20 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:29:58 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	dst_len;

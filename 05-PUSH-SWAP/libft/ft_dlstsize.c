@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 11:39:22 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 00:40:02 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:28:36 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_dlstsize(t_dlist **dlist_start)
 {
-	int	size;
-	t_dlist *node;
+	int		size;
+	t_dlist	*node;
 
 	size = 0;
 	node = ft_dlstfirst(*dlist_start);

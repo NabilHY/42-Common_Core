@@ -6,15 +6,15 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:42:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 00:46:37 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:23:16 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_dlist		*ft_dlstfirst(t_dlist *lst)
+t_dlist	*ft_dlstfirst(t_dlist *lst)
 {
-	t_dlist		*head;
+	t_dlist	*head;
 
 	if (!lst)
 		return (NULL);

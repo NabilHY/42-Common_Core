@@ -6,60 +6,18 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 23:10:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 11:46:15 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long	ft_atol(char *str)
+int	args_num(int ac, char **av)
 {
-	int					i;
-	int					sign;
-	long				result;
-
-	i = 0;
-	sign = 1;
-	while (str[i] <= 32)
-		i++;
-	result = 0;
-	if (str[i] == '-')
-	{
-		sign *= -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (ft_isdigit(str[i]))
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
-}
-
-int		in_range(char **args)
-{
-	long	number;
-	int		i;
-
-	i = 0;
-	while (args[i])
-	{
-		number = ft_atol(args[i]);
-		if (number > INT_MAX || number < INT_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int		args_num(int ac, char **av)
-{
-	int j;
-	int n;
-	char **temp;
-	int args_size;
+	int		j;
+	int		n;
+	char	**temp;
+	int		args_size;
 
 	j = 1;
 	args_size = 0;
@@ -67,6 +25,8 @@ int		args_num(int ac, char **av)
 	{
 		{
 			temp = ft_split(av[j], ' ');
+			if (!temp)
+				return (0);
 			n = 0;
 			while (temp[n])
 			{
@@ -82,11 +42,11 @@ int		args_num(int ac, char **av)
 
 char	**ft_sets(int ac, char **av)
 {
-	int i;
-	int j;
-	int n;
-	char **temp;
-	char **args_arr;
+	int		i;
+	int		j;
+	int		n;
+	char	**temp;
+	char	**args_arr;
 
 	i = 0;
 	j = 1;
@@ -133,10 +93,10 @@ int	check_args(char **arr_of_args)
 
 int	check_repetition(char **arr_of_args)
 {
-	int		i;
-	int		j;
-	int		first;
-	int		second;
+	int	i;
+	int	j;
+	int	first;
+	int	second;
 
 	i = 0;
 	while (arr_of_args[i])
@@ -155,12 +115,12 @@ int	check_repetition(char **arr_of_args)
 	return (0);
 }
 
-t_dlist		*parse_args(int ac, char **av)
+t_dlist	*parse_args(int ac, char **av)
 {
 	int		i;
-	char 	**args_array;
-	int 	args_size;
-	t_dlist *a_stack;
+	char	**args_array;
+	int		args_size;
+	t_dlist	*a_stack;
 
 	i = 0;
 	args_size = args_num(ac, av);
@@ -172,11 +132,18 @@ t_dlist		*parse_args(int ac, char **av)
 			args_array = ft_split(av[1], 32);
 		else
 			args_array = ft_sets(ac, av);
-		if (!check_args(args_array) || check_repetition(args_array) || !in_range(args_array))
+		if (!args_array || ft_invalid(args_array))
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (NULL);
+		}
+		else if (!(args_array) || !check_args(args_array) || check_repetition(args_array) 
+			|| !in_range(args_array))
 			return (handle_fail(args_array));
 		while (args_array[i])
 		{
-			ft_dlstadd_front(&a_stack, ft_dlstnew(args_size - i, ft_atoi(args_array[i])));
+			ft_dlstadd_front(&a_stack, ft_dlstnew(args_size - i,
+					ft_atoi(args_array[i])));
 			i++;
 		}
 		free_arr(args_array);

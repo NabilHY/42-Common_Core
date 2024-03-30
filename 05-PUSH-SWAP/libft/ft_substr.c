@@ -6,11 +6,12 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 17:43:34 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/02/27 17:00:20 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:30:22 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
@@ -27,15 +28,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	i = 0;
 	while (i < len)
-		sub[i++] = s[start++]; 
+		sub[i++] = s[start++];
 	sub[i] = '\0';
 	return (sub);
 }
 /*
-int	main()
+int	main(void)
 {
-	char str[] = "copy this hello world to another string";
-	char dest[12];
+	char	str[] = "copy this hello world to another string";
+	char	dest[12];
 
 	ft_substr(str, 10, 11);
 	printf("%s\n", dest);

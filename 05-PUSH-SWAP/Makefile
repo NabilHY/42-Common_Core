@@ -13,7 +13,8 @@ SRCS = ./srcs/parsing_utilities.c \
 ./srcs/target.c \
 ./srcs/cost.c \
 ./srcs/sort.c \
-./srcs/sort2.c
+./srcs/sort2.c \
+./srcs/chunk.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile
 INCLUDE = ./includes

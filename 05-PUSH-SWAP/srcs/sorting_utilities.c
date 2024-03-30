@@ -6,14 +6,22 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 04:04:57 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/29 04:45:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:01:50 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// fill arr with values from ll
-void		fill_arr(t_dlist **stack, int *arr)
+int	*arr_alloc(int size)
+{
+	int	*array;
+
+	array = NULL;
+	array = (int *)malloc(sizeof(int) * size);
+	return (array);
+}
+
+void	fill_arr(t_dlist **stack, int *arr)
 {
 	int		i;
 	int		last_index;
@@ -32,11 +40,11 @@ void		fill_arr(t_dlist **stack, int *arr)
 	}
 }
 
-void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
+void	fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
 {
 	int		i;
 	int		last_index;
-	t_dlist *target_node;
+	t_dlist	*target_node;
 
 	if (!arr || !stack || !node)
 		return ;
@@ -51,36 +59,18 @@ void		fill_arr_dif(t_dlist **stack, t_dlist *node, int *arr)
 	}
 }
 
-int			max_value(t_dlist **stack)
+int	min_value(t_dlist **stack)
 {
-	int stack_arr[ft_dlstsize(stack)];
-	int max_index;
-	int max;
-	int i;
+	int	*stack_arr;
+	int	min_index;
+	int	min;
+	int	size;
+	int	i;
 
-	fill_arr(stack, stack_arr);
-	i = 0;
-	max = stack_arr[0];
-	max_index = 0;
-	while (i < ft_dlstsize(stack))
-	{
-		if (stack_arr[i] > max)
-		{
-			max = stack_arr[i];
-			max_index = i;
-		}
-		i++;
-	}
-	return (max_index);
-}
-
-int			min_value(t_dlist **stack)
-{
-	int stack_arr[ft_dlstsize(stack)];
-	int min_index;
-	int min;
-	int i;
-
+	size = ft_dlstsize(stack);
+	stack_arr = arr_alloc(size);
+	if (!stack_arr)
+		return (-1);
 	fill_arr(stack, stack_arr);
 	i = 0;
 	min = stack_arr[0];
@@ -94,17 +84,18 @@ int			min_value(t_dlist **stack)
 		}
 		i++;
 	}
+	free(stack_arr);
 	return (min_index);
 }
 
-int			is_sorted(t_dlist **stack)
+int	is_sorted(t_dlist **stack)
 {
-	t_dlist *head;
+	t_dlist	*head;
 
 	head = ft_dlstfirst(*stack);
 	if (!head)
 		return (0);
-	while (head)
+	while (head->next)
 	{
 		if (head->value < head->next->value)
 			return (0);

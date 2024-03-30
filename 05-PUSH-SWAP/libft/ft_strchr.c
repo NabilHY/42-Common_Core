@@ -6,11 +6,12 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:46:25 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/02/27 17:00:20 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 07:29:47 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;

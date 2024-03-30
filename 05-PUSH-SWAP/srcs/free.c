@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 09:22:47 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/28 09:23:37 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:35:57 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,44 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
-t_dlist		*handle_fail(char **arr)
+void	free_int_arr(int **arr, int size)
 {
-		free_arr(arr);
-		*arr = NULL;
-		ft_putstr_fd("Error\n", 1);
-		return (NULL);
+	int	i;
+
+	if (!arr)
+		return ;
+	i = 0;
+	while (i < size - 1)
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+		i++;
+	}
+	free(arr);
 }
 
-void    free_stack(t_dlist **stack)
+t_dlist	*handle_fail(char **arr)
 {
-    t_dlist *node;
-    t_dlist *tmp;
+	free_arr(arr);
+	*arr = NULL;
+	ft_putstr_fd("Error\n", 2);
+	return (NULL);
+}
 
-    if (!(*stack))
-        return;
-    node = ft_dlstfirst(*stack);
-    while (node)
-    {
-        tmp = node->next;
-        free(node);
-        node = NULL;
-        node = tmp;
-    }
-    *stack = NULL;
+void	free_stack(t_dlist **stack)
+{
+	t_dlist	*node;
+	t_dlist	*tmp;
+
+	if (!(*stack))
+		return ;
+	node = ft_dlstfirst(*stack);
+	while (node)
+	{
+		tmp = node->next;
+		free(node);
+		node = NULL;
+		node = tmp;
+	}
+	*stack = NULL;
 }

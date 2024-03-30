@@ -6,13 +6,13 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/29 00:20:38 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/30 09:10:30 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		find_max(t_dlist *head)
+int	find_max(t_dlist *head)
 {
 	int		max;
 	t_dlist	*current;
@@ -30,7 +30,7 @@ int		find_max(t_dlist *head)
 
 void	sort_nodes(t_dlist *head)
 {
-	int		max;
+	int	max;
 
 	max = find_max(head);
 	if (head->value == max)

@@ -1,6 +1,6 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-FSANITIZE= -g -fsanitize=address
+#FSANITIZE= -g -fsanitize=address
 SRCS = ft_isascii.c \
 ft_isalpha.c \
 ft_isdigit.c \
@@ -58,7 +58,7 @@ $(NAME): $(INCLUDE) $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	@$(CC) $(FLAGS) $(FSANITIZE) -I $(INCLUDE) -c $< -o $@
+	@$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS) $(OBJSB)

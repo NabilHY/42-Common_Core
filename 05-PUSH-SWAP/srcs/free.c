@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 09:22:47 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 09:35:57 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 06:59:50 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void	free_int_arr(int **arr, int size)
 
 t_dlist	*handle_fail(char **arr)
 {
-	free_arr(arr);
-	*arr = NULL;
+	if (arr)
+	{
+		free_arr(arr);
+		*arr = NULL;
+	}
 	ft_putstr_fd("Error\n", 2);
 	return (NULL);
 }

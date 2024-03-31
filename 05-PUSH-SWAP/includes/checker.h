@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstdelone.c                                    :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 11:37:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 09:22:39 by nhayoun          ###   ########.fr       */
+/*   Created: 2024/03/31 08:23:41 by nhayoun           #+#    #+#             */
+/*   Updated: 2024/03/31 10:29:54 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef CHECKER_H
+#define CHECKER_H
+#endif
 
-void	ft_dlstdelone(t_dlist *dlst, void (*del)(void *))
-{
-	if (!dlst || !del)
-		return ;
-	free(dlst);
-}
+#include "./push_swap.h"
+#include <stdio.h>
+char	*get_next_line(int fd);
+void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b);
+int		is_valid(char *str);
+int	 	sorted(t_dlist **stack);
+
+
+
+
+
+

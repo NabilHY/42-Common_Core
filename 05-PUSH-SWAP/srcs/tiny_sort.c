@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 01:56:07 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 09:10:30 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 07:21:12 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ void	sort_nodes(t_dlist *head)
 	int	max;
 
 	max = find_max(head);
-	if (head->value == max)
-	{
-		if (head->next->value < head->next->next->value)
-			swap(&head, NULL);
-	}
+	if (head->value == max && (head->next->value < head->next->next->value))
+		swap(&head, NULL);
 	else if (head->next->value == max)
 	{
 		if (head->value > head->next->next->value)

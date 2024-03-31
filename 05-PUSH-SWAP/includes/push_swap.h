@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:19:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 10:27:41 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 11:17:31 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 # include <limits.h>
-# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 t_dlist	*parse_args(int ac, char **av);
 int		check_args(char **arr_of_args);
@@ -49,4 +52,8 @@ int		in_range(char **args);
 long	ft_atol(char *str);
 int		in_range(char **args);
 int		ft_invalid(char **args);
+void	move_node_to_stack(t_dlist **source_stack, t_dlist **dest_stack);
+void	rotate_stack(t_dlist *stack);
+void	rrotate_stack(t_dlist *stack);
+void	swap_stack(t_dlist *tail);
 #endif

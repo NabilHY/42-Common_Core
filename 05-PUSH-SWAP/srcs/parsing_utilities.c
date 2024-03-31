@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 12:33:59 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 11:46:15 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 07:13:02 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,34 +117,27 @@ int	check_repetition(char **arr_of_args)
 
 t_dlist	*parse_args(int ac, char **av)
 {
-	int		i;
+	int		i[2];
 	char	**args_array;
-	int		args_size;
 	t_dlist	*a_stack;
 
-	i = 0;
-	args_size = args_num(ac, av);
+	i[0] = 0;
+	i[1] = args_num(ac, av);
 	a_stack = NULL;
 	if (ac != 1)
 	{
-		i = 0;
 		if (ac == 2)
 			args_array = ft_split(av[1], 32);
 		else
 			args_array = ft_sets(ac, av);
-		if (!args_array || ft_invalid(args_array))
-		{
-			ft_putstr_fd("Error\n", 2);
-			return (NULL);
-		}
-		else if (!(args_array) || !check_args(args_array) || check_repetition(args_array) 
-			|| !in_range(args_array))
+		if (!(args_array) || !check_args(args_array) || ft_invalid(args_array)
+			|| check_repetition(args_array) || !in_range(args_array))
 			return (handle_fail(args_array));
-		while (args_array[i])
+		while (args_array[i[0]])
 		{
-			ft_dlstadd_front(&a_stack, ft_dlstnew(args_size - i,
-					ft_atoi(args_array[i])));
-			i++;
+			ft_dlstadd_front(&a_stack, 
+				ft_dlstnew(i[1] - i[0], ft_atoi(args_array[i[0]])));
+			i[0]++;
 		}
 		free_arr(args_array);
 	}

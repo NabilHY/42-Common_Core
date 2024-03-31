@@ -6,20 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:11 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 07:31:37 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 08:18:03 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	swap_values(t_dlist *node_1, t_dlist *node_2)
-{
-	int	temp;
-
-	temp = node_1->value;
-	node_1->value = node_2->value;
-	node_2->value = temp;
-}
 
 void	rrotate_nodes(t_dlist *node, t_dlist *prev_node)
 {
@@ -29,27 +20,22 @@ void	rrotate_nodes(t_dlist *node, t_dlist *prev_node)
 	t_dlist	*current_prev;
 	t_dlist	*head;
 
-	if (!(prev_node->prev))
-		swap_values(node, prev_node);
-	else
+	current = node;
+	head = ft_dlstfirst(node);
+	current_prev = prev_node;
+	tmp = current->value;
+	current->value = head->value;
+	current = current_prev;
+	current_prev = current_prev->prev;
+	while (current)
 	{
-		current = node;
-		head = ft_dlstfirst(node);
-		current_prev = prev_node;
-		tmp = current->value;
-		current->value = head->value;
+		second_tmp = current->value;
+		current->value = tmp;
+		if (!current_prev)
+			break ;
+		tmp = second_tmp;
 		current = current_prev;
 		current_prev = current_prev->prev;
-		while (current)
-		{
-			second_tmp = current->value;
-			current->value = tmp;
-			if (!current_prev)
-				break ;
-			tmp = second_tmp;
-			current = current_prev;
-			current_prev = current_prev->prev;
-		}
 	}
 	update_indexes(&node);
 }

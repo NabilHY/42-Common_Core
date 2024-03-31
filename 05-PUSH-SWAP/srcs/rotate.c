@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:52:06 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/30 09:11:45 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/03/31 07:05:12 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,21 @@ void	rotate_nodes(t_dlist *node, t_dlist *next_node)
 	t_dlist	*current;
 	t_dlist	*current_next;
 
-	if (!(next_node->next))
-		swap_values(node, next_node);
-	else
+	current = node;
+	current_next = next_node;
+	tmp = current->value;
+	current->value = ft_dlstlast(node)->value;
+	current = current_next;
+	current_next = current_next->next;
+	while (current)
 	{
-		current = node;
-		current_next = next_node;
-		tmp = current->value;
-		current->value = ft_dlstlast(node)->value;
+		second_tmp = current->value;
+		current->value = tmp;
+		if (!current_next)
+			break ;
+		tmp = second_tmp;
 		current = current_next;
 		current_next = current_next->next;
-		while (current)
-		{
-			second_tmp = current->value;
-			current->value = tmp;
-			if (!current_next)
-				break ;
-			tmp = second_tmp;
-			current = current_next;
-			current_next = current_next->next;
-		}
 	}
 	update_indexes(&node);
 }

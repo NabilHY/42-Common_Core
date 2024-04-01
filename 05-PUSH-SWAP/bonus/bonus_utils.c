@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:52:37 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/31 11:17:59 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/01 02:44:53 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	sorted(t_dlist **stack)
 
 int		get_num(char *str)
 {
-	char valid_ops[][3] = {"pa","pb","ra","rb","rra","rrb","sa","sb", "ss", "rr", "rrr"};
+	char valid_ops[][5] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
 	int	 i;
 
 	i = 0;
@@ -45,20 +45,21 @@ int		get_num(char *str)
 
 int		is_valid(char *str)
 {
-	char 	valid_ops[][3] = {"pa","pb","ra","rb","rra","rrb","sa","sb", "ss", "rr", "rrr"};
+	char 	valid_ops[][5] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
 	int	 	i;
 
 	i = 0;
+	
 	while (i < 11)
 	{
-		if (ft_strncmp(str, valid_ops[i], ft_strlen(valid_ops[i])))
-			break;
+			if (!ft_strncmp(str, valid_ops[i], ft_strlen(valid_ops[i])))
+				break;
 		i++;
 	}
 	if (i == 11)
 		return (0);
 	return (1);
-};
+}
 
 void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 {
@@ -91,7 +92,7 @@ void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 		rotate_stack(*stack_a);
 		rotate_stack(*stack_b);
 	}
-	else if (op_num == 9)
+	else if (op_num == 10)
 	{
 		rrotate_stack(*stack_a);
 		rrotate_stack(*stack_b);

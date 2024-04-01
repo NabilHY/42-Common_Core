@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 08:21:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/31 11:51:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/01 02:45:17 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,21 @@
 
 int	ft_checker(t_dlist **stack_a, t_dlist **stack_b)
 {
-	char	current_line[1024];
-	char	*tmp;
-	int		ins;
-	int		br;
-	int 	i;
-
-	(void)stack_a;
-	(void)stack_b;
-	br = 1;
-	ins = 0;
-	i = 0;
-	while (read(0, current_line, 1024) > 0)
+	char	*line;
+	
+	line = NULL;
+	while (1)
 	{
-		current_line[3] = '\0';
-        tmp = ft_strdup(current_line);
-        if (!is_valid(tmp))
+        line = get_next_line(0);
+		printf("%s", line);
+        if (!is_valid(line))
 		{
             handle_fail(NULL);
-			break;
+			exit(1);
 		}
         else
-            do_op(tmp, stack_a, stack_b);
-        free(tmp);
+            do_op(line, stack_a, stack_b);
+        free(line);
 	}
 	if (sorted(stack_a))
 		return (1);

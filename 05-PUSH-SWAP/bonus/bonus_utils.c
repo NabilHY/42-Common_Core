@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:52:37 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/02 02:20:56 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/02 23:36:26 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,49 @@ int	sorted(t_dlist **stack)
 	return (1);
 }
 
-int		get_num(char *str)
-{
-	char valid_ops[][4] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
-	int	 i;
-
-	i = 0;
-	while (i < 11)
-	{
-		if (!ft_strncmp(str, valid_ops[i], 4))
-			return (i);
-		i++;
-	}
-	return (i);
+int get_num(char *str) {
+    if (!ft_strncmp(str, "pa\n", 3))
+        return (0);
+    else if (!ft_strncmp(str, "pb\n", 3))
+        return (1);
+    else if (!ft_strncmp(str, "ra\n", 3))
+        return (2);
+    else if (!ft_strncmp(str, "rb\n", 3))
+        return (3);
+    else if (!ft_strncmp(str, "rra\n", 4))
+        return (4);
+    else if (!ft_strncmp(str, "rrb\n", 4))
+        return (5);
+    else if (!ft_strncmp(str, "sa\n", 3))
+        return (6);
+    else if (!ft_strncmp(str, "sb\n", 3))
+        return (7);
+    else if (!ft_strncmp(str, "ss\n", 3))
+        return (8);
+    else if (!ft_strncmp(str, "rr\n", 3))
+        return (9);
+    else if (!ft_strncmp(str, "rrr\n", 4))
+        return (10);
+    else
+        return (-1);
 }
 
-int		is_valid(char *str)
-{
-	char 	valid_ops[][4] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
-	int	 	i;
-
-	i = 0;
-	
-	while (i < 11)
-	{
-			if (!ft_strncmp(str, valid_ops[i], 4))
-				break;
-		i++;
-	}
-	if (i == 11)
-		return (0);
-	return (1);
+int is_valid(char *str) {
+    if (!ft_strncmp(str, "pa\n", 3) ||
+        !ft_strncmp(str, "pb\n", 3) ||
+        !ft_strncmp(str, "ra\n", 3) ||
+        !ft_strncmp(str, "rb\n", 3) ||
+        !ft_strncmp(str, "rra\n", 4) ||
+        !ft_strncmp(str, "rrb\n", 4) ||
+        !ft_strncmp(str, "sa\n", 3) ||
+        !ft_strncmp(str, "sb\n", 3) ||
+        !ft_strncmp(str, "ss\n", 3) ||
+        !ft_strncmp(str, "rr\n", 3) ||
+        !ft_strncmp(str, "rrr\n", 4)) {
+        return (1);
+    } else {
+        return (0);
+    }
 }
 
 void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)

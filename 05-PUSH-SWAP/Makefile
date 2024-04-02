@@ -25,7 +25,8 @@ BONUS_SRCS = ./srcs/parsing_utilities.c \
 ./srcs/rotate.c \
 ./bonus/checker.c \
 ./bonus/bonus_utils.c \
-./bonus/get_next_line.c
+./bonus/get_next_line.c \
+./bonus/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 LIBFT_MAKEFILE = ./libft/Makefile

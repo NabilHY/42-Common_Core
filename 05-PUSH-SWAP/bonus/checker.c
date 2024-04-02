@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 08:21:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/01 02:45:17 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/02 02:10:34 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 int	ft_checker(t_dlist **stack_a, t_dlist **stack_b)
 {
-	char	*line;
+	char	line[5];
 	
-	line = NULL;
+	ft_memset(line, 0, 5);
 	while (1)
 	{
-        line = get_next_line(0);
+		read(0, line, 4);
+		line[4] = '\0';
 		printf("%s", line);
-        if (!is_valid(line))
+        if (line[0] == '\n' || !is_valid(line))
 		{
+			if (!line[0])
+				break;
             handle_fail(NULL);
 			exit(1);
 		}
         else
             do_op(line, stack_a, stack_b);
-        free(line);
+        ft_memset(line, 0, 5);
 	}
 	if (sorted(stack_a))
 		return (1);

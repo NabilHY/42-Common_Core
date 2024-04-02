@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:52:37 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/01 02:44:53 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/02 02:20:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	sorted(t_dlist **stack)
 
 int		get_num(char *str)
 {
-	char valid_ops[][5] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
+	char valid_ops[][4] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
 	int	 i;
 
 	i = 0;
 	while (i < 11)
 	{
-		if (!ft_strncmp(str, valid_ops[i], ft_strlen(valid_ops[i])))
+		if (!ft_strncmp(str, valid_ops[i], 4))
 			return (i);
 		i++;
 	}
@@ -45,14 +45,14 @@ int		get_num(char *str)
 
 int		is_valid(char *str)
 {
-	char 	valid_ops[][5] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
+	char 	valid_ops[][4] = {"pa\n","pb\n","ra\n","rb\n","rra\n","rrb\n","sa\n","sb\n", "ss\n", "rr\n", "rrr\n"};
 	int	 	i;
 
 	i = 0;
 	
 	while (i < 11)
 	{
-			if (!ft_strncmp(str, valid_ops[i], ft_strlen(valid_ops[i])))
+			if (!ft_strncmp(str, valid_ops[i], 4))
 				break;
 		i++;
 	}
@@ -71,11 +71,11 @@ void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 	else if (op_num == 1)
 		move_node_to_stack(stack_a, stack_b);
 	else if (op_num == 2)
-		rotate_stack(*stack_a);
+		rotate_stack(ft_dlstlast(*stack_a));
 	else if (op_num == 3)
-		rotate_stack(*stack_b);
+		rotate_stack(ft_dlstlast(*stack_b));
 	else if (op_num == 4)
-		rrotate_stack(*stack_a);
+		rrotate_stack(ft_dlstlast(*stack_a));
 	else if (op_num == 5)
 		rrotate_stack(*stack_b);
 	else if (op_num == 6)
@@ -89,12 +89,12 @@ void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 	}
 	else if (op_num == 9)
 	{
-		rotate_stack(*stack_a);
-		rotate_stack(*stack_b);
+		rotate_stack(ft_dlstlast(*stack_a));
+		rotate_stack(ft_dlstlast(*stack_a));
 	}
 	else if (op_num == 10)
 	{
-		rrotate_stack(*stack_a);
-		rrotate_stack(*stack_b);
+		rrotate_stack(ft_dlstlast(*stack_a));
+		rrotate_stack(ft_dlstlast(*stack_a));
 	}
 }

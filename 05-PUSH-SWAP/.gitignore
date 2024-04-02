@@ -2,3 +2,4 @@
 /.vscode
 /push_swap.dSYM
 Makefile
+.DS_Store

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 08:21:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/02 23:44:14 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/03 05:07:03 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "includes/checker.h"
 
 int	ft_checker(t_dlist **stack_a, t_dlist **stack_b)
 {
 	char	*line;
-	
+
 	line = NULL;
 	while (1)
 	{
@@ -50,5 +50,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
+	free_stack(&a_stack);
+	free_stack(&b_stack);
 	return (0);
 }

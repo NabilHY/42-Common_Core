@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_utils.c                                      :+:      :+:    :+:   */
+/*   bonus_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 09:52:37 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/02 23:36:26 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/03 05:02:09 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/checker_bonus.h"
 
 int	sorted(t_dlist **stack)
 {
@@ -83,9 +83,9 @@ void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 	else if (op_num == 1)
 		move_node_to_stack(stack_a, stack_b);
 	else if (op_num == 2)
-		rotate_stack(ft_dlstlast(*stack_a));
+		rotate_stack(ft_dlstfirst(*stack_a));
 	else if (op_num == 3)
-		rotate_stack(ft_dlstlast(*stack_b));
+		rotate_stack(ft_dlstfirst(*stack_b));
 	else if (op_num == 4)
 		rrotate_stack(ft_dlstlast(*stack_a));
 	else if (op_num == 5)
@@ -101,8 +101,8 @@ void	do_op(char *str, t_dlist **stack_a, t_dlist **stack_b)
 	}
 	else if (op_num == 9)
 	{
-		rotate_stack(ft_dlstlast(*stack_a));
-		rotate_stack(ft_dlstlast(*stack_a));
+		rotate_stack(ft_dlstfirst(*stack_a));
+		rotate_stack(ft_dlstfirst(*stack_a));
 	}
 	else if (op_num == 10)
 	{

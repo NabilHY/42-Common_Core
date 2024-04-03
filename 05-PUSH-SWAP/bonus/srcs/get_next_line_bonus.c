@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 15:08:00 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/03/31 23:26:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/03 05:02:02 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/checker_bonus.h"
 
 char	*free_and_join(char *stash, char *buffer)
 {
 	char	*joined;
 
-	joined = ft_strjoin(stash, buffer);
+	joined = split_strjoin(stash, buffer);
 	free(stash);
 	return (joined);
 }
@@ -38,7 +38,7 @@ char	*read_and_stash(char *stash, int fd)
 		}
 		buffer[br] = 0;
 		stash = free_and_join(stash, buffer);
-		if (ft_strchr(buffer, '\n') || stash == NULL)
+		if (split_strchr(buffer, '\n') || stash == NULL)
 			break ;
 	}
 	return (stash);
@@ -52,11 +52,11 @@ char	*process_line(char *stash)
 
 	if (!stash || !stash[0])
 		return (NULL);
-	newline_ptr = ft_strchr(stash, '\n');
+	newline_ptr = split_strchr(stash, '\n');
 	if (!newline_ptr)
-		return (ft_strdup(stash));
+		return (split_strdup(stash));
 	len = newline_ptr - stash;
-	line = ft_substr(stash, 0, len + 1);
+	line = split_substr(stash, 0, len + 1);
 	return (line);
 }
 
@@ -64,18 +64,16 @@ char	*update_stash(char *stash)
 {
 	char	*newline_ptr;
 	char	*new_stash;
-	int		len;
 
 	if (!stash)
 		return (NULL);
-	newline_ptr = ft_strchr(stash, '\n');
+	newline_ptr = split_strchr(stash, '\n');
 	if (!newline_ptr)
 	{
 		free(stash);
 		return (NULL);
 	}
-	len = newline_ptr - stash;
-	new_stash = ft_strdup(newline_ptr + 1);
+	new_stash = split_strdup(newline_ptr + 1);
 	free(stash);
 	return (new_stash);
 }

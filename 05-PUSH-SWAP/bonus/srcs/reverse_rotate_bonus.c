@@ -47,28 +47,6 @@ void	rrotate_stack(t_dlist *stack)
 	rrotate_nodes(stack, stack->prev);
 }
 
-void	rrotate(t_dlist **first_stack, t_dlist **second_stack)
-{
-	if (!first_stack && !second_stack)
-		return ;
-	if (first_stack && !second_stack)
-	{
-		rrotate_stack(ft_dlstlast(*first_stack));
-		ft_putstr_fd("rra\n", 1);
-	}
-	else if (!first_stack && second_stack)
-	{
-		rrotate_stack(ft_dlstlast(*second_stack));
-		ft_putstr_fd("rrb\n", 1);
-	}
-	else
-	{
-		rrotate_stack(ft_dlstlast(*first_stack));
-		rrotate_stack(ft_dlstlast(*second_stack));
-		ft_putstr_fd("rrr\n", 1);
-	}
-}
-
 /*
 	Our goal is to shift down the whole stack
 	1. If stack has no nodes or one node we'll simply return

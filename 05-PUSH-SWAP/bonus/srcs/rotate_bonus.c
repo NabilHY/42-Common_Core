@@ -53,25 +53,3 @@ void	rotate_stack(t_dlist *stack)
 		return ;
 	rotate_nodes(stack, stack->next);
 }
-
-void	rotate(t_dlist **first_stack, t_dlist **second_stack)
-{
-	if (!first_stack && !second_stack)
-		return ;
-	if (first_stack && !second_stack)
-	{
-		rotate_stack(ft_dlstfirst(*first_stack));
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if (!first_stack && second_stack)
-	{
-		rotate_stack(ft_dlstfirst(*second_stack));
-		ft_putstr_fd("rb\n", 1);
-	}
-	else
-	{
-		rotate_stack(ft_dlstfirst(*first_stack));
-		rotate_stack(ft_dlstfirst(*second_stack));
-		ft_putstr_fd("rr\n", 1);
-	}
-}

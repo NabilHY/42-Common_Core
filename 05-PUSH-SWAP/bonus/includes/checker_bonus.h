@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 08:23:41 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/03 04:59:57 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/03 22:41:45 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ t_dlist	*parse_args(int ac, char **av);
 int		check_args(char **arr_of_args);
 void	free_arr(char **arr);
 int		check_repetition(char **arr_of_args);
-void	push(t_dlist **first_stack, t_dlist **second_stack, char stack);
-void	rotate(t_dlist **first_stack, t_dlist **second_stack);
-void	rrotate(t_dlist **first_stack, t_dlist **second_stack);
-void	swap(t_dlist **first_stack, t_dlist **second_stack);
 void	update_indexes(t_dlist **stack);
 void	free_stack(t_dlist **stack);
 void	free_arr(char **arr);

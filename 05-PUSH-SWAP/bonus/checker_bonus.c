@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 08:21:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/03 05:07:03 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/03 05:56:59 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/checker.h"
+#include "includes/checker_bonus.h"
 
 int	ft_checker(t_dlist **stack_a, t_dlist **stack_b)
 {
